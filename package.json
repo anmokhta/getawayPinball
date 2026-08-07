@@ -1,0 +1,12 @@
+{
+  "name": "getaway-pinball-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Getaway Pinball Arcade — static marketing site.",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}

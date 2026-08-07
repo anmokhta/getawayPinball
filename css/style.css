@@ -12,6 +12,12 @@
     background-color: #131314;
   }
 
+  /* Keeps anchor jumps (e.g. #location) from landing underneath the sticky
+     header + promo banner. Roughly matches their combined height. */
+  html {
+    scroll-padding-top: 140px;
+  }
+
   body {
     overscroll-behavior: none;
     color: #e5e2e3;

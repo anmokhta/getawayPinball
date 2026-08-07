@@ -22,68 +22,14 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script src="js/tailwind-config.js"></script>
 
+    <!-- Shared header/footer templates (must load before <site-header>/<site-footer> are parsed) -->
+    <script src="js/partials.js"></script>
+
     <!-- Site styles -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="bg-background font-body-md text-on-background">
-    <!-- Site Header (sticky: stays pinned to the top, promo banner scrolls up together with the nav) -->
-    <header
-      class="sticky top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/5"
-    >
-      <!--
-        Promo Announcement Banner — temporary, pre-opening only.
-        To remove once the arcade is open: delete this whole "#promo-banner" block, nothing else needs to change.
-      -->
-      <div
-        id="promo-banner"
-        class="w-full bg-accent-red py-3 px-margin-mobile lg:px-margin-desktop flex items-center justify-center shadow-[0_0_20px_rgba(227,27,35,0.6)] animate-pulse"
-      >
-        <span
-          class="font-headline-md text-white uppercase tracking-widest text-center drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-        >
-          Coming to Downtown Dublin August 2026!
-        </span>
-      </div>
-
-      <div
-        class="h-20 max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between"
-      >
-        <div class="flex items-center gap-4">
-          <img
-            src="assets/full_logo_crop_wordmark.png"
-            alt="The Getaway Logo"
-            class="h-12 w-auto object-contain logo-neon-red"
-          />
-          <span
-            class="font-headline-md text-headline-md text-primary-container tracking-tighter uppercase italic sr-only"
-            >THE GETAWAY</span
-          >
-        </div>
-
-        <nav class="hidden lg:flex items-center gap-gutter">
-          <a
-            href="#"
-            class="font-label-sm text-label-sm text-on-surface-variant hover:text-accent-red transition-all uppercase tracking-widest"
-            >Home</a
-          >
-          <a
-            href="#"
-            class="font-label-sm text-label-sm text-on-surface-variant hover:text-accent-red transition-all uppercase tracking-widest"
-            >Machines</a
-          >
-          <a
-            href="#"
-            class="font-label-sm text-label-sm text-on-surface-variant hover:text-accent-red transition-all uppercase tracking-widest"
-            >Events</a
-          >
-          <a
-            href="#"
-            class="font-label-sm text-label-sm text-on-surface-variant hover:text-accent-red transition-all uppercase tracking-widest"
-            >Location</a
-          >
-        </nav>
-      </div>
-    </header>
+    <site-header></site-header>
 
     <main class="w-full">
       <div class="flex flex-col w-full">
@@ -140,19 +86,21 @@
             <div
               class="flex flex-col sm:flex-row items-center justify-center gap-6"
             >
-              <button
+              <a
+                href="events/"
                 class="group relative px-10 py-5 bg-primary-container text-white font-label-bold text-label-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(227,27,35,0.4)]"
               >
                 <span class="relative z-10">View Events</span>
                 <div
                   class="absolute inset-0 bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"
                 ></div>
-              </button>
-              <button
+              </a>
+              <a
+                href="machines/"
                 class="px-10 py-5 border border-white text-white font-label-bold text-label-bold uppercase tracking-widest hover:bg-white hover:text-background transition-all backdrop-blur-sm"
               >
                 View Machines
-              </button>
+              </a>
             </div>
           </div>
 
@@ -368,7 +316,7 @@
         </section>
 
         <!-- Location / Final CTA -->
-        <section class="w-full py-24 relative overflow-hidden">
+        <section id="location" class="w-full py-24 relative overflow-hidden">
           <div
             class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
           >
@@ -444,76 +392,9 @@
       </div>
     </main>
 
-    <!-- Site Footer -->
-    <footer
-      class="w-full bg-surface-container-lowest py-margin-desktop mt-gutter border-t border-white/5"
-    >
-      <div class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          <div class="space-y-4">
-            <h4 class="font-headline-md text-headline-md text-primary-container">
-              Arcade Hours
-            </h4>
-            <p
-              class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide leading-relaxed"
-            >
-              MON - THU: 4PM - 12AM<br />
-              FRI: 4PM - 2AM<br />
-              SAT: 12PM - 2AM<br />
-              SUN: 12PM - 10PM
-            </p>
-          </div>
+    <site-footer></site-footer>
 
-          <div class="space-y-4">
-            <h4 class="font-headline-md text-headline-md text-accent-red neon-text-red">
-              Join the Circuit
-            </h4>
-            <div class="flex flex-col gap-2">
-              <input
-                type="email"
-                placeholder="Enter email for news..."
-                class="bg-surface-container-high border-b border-outline p-2 font-body-md text-on-surface focus:border-accent-red focus:outline-none transition-all placeholder:text-outline-variant"
-              />
-              <button
-                class="bg-primary-container text-white font-label-bold text-label-bold py-3 px-4 uppercase tracking-tighter neon-glow-primary transition-all"
-              >
-                Subscribe
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-4">
-            <h4 class="font-headline-md text-headline-md text-primary-container">
-              Connect
-            </h4>
-            <div class="flex gap-4">
-              <span
-                class="material-symbols-outlined text-on-surface-variant hover:text-accent-red cursor-pointer transition-colors"
-                >share</span
-              >
-              <span
-                class="material-symbols-outlined text-on-surface-variant hover:text-accent-red cursor-pointer transition-colors"
-                >forum</span
-              >
-              <span
-                class="material-symbols-outlined text-on-surface-variant hover:text-accent-red cursor-pointer transition-colors"
-                >play_circle</span
-              >
-            </div>
-            <p class="font-body-md text-on-surface-variant">
-              6890 Village Parkway, Dublin, CA 94568
-            </p>
-          </div>
-        </div>
-
-        <div
-          class="pt-8 border-t border-white/5 text-center font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest"
-        >
-          © 2026 THE GETAWAY
-        </div>
-      </div>
-    </footer>
-
+    <script src="js/nav.js"></script>
     <script src="js/main.js" defer></script>
   </body>
 </html>
