@@ -1,0 +1,17 @@
+https://pinballmap.com/map
+
+
+Websites to reference/compare/question:
+https://theflipperroom.com/
+https://www.therewindarcade.com/games-on-deck
+https://www.pacificpinball.org/
+
+
+
+Initial V1 goals:
+- dedicated website (id prefer code over godaddy)
+- games list that can be updated by non coder
+    - see other markdown on root for ideas
+- newsletter
+    - research free options that look best/support expected users
+    - see how many people currently signed up

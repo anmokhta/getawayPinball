@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;600;700;800;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #131314;
+      }
+      body {
+        overscroll-behavior: none;
+        color: #e5e2e3;
+      }
+      main > :first-child {
+        margin-top: 0 !important;
+      }
+      main > :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .glass-card {
+      background: rgba(32, 31, 32, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(227, 27, 35, 0.2);
+    }
+    .neon-glow-primary:hover {
+      box-shadow: 0 0 20px rgba(227, 27, 35, 0.6);
+      border-color: #e31b23;
+    }
+    .neon-glow-red {
+      box-shadow: 0 0 10px rgba(227, 27, 35, 0.3);
+    }
+    .neon-text-red {
+      text-shadow: 0 0 8px rgba(227, 27, 35, 0.6);
+    }
+    .neon-border-red {
+      box-shadow: 0 0 5px rgba(227, 27, 35, 0.2);
+    }
+    /* Logo Neon Glow Filter */
+    .logo-neon-red {
+      filter: drop-shadow(0 0 12px rgba(227, 27, 35, 0.5));
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-fixed-dim": "#c6c6c7",
+                "on-surface": "#e5e2e1",
+                "inverse-primary": "#c00015",
+                "on-error-container": "#ffdad6",
+                "tertiary-fixed-dim": "#c8c6c5",
+                "primary": "#ffb4ac",
+                "surface-container": "#201f1f",
+                "surface-container-highest": "#353534",
+                "secondary-fixed": "#e2e2e2",
+                "on-secondary-fixed": "#1a1c1c",
+                "surface-bright": "#3a3939",
+                "on-tertiary-container": "#fdfaf9",
+                "outline-variant": "#5d3f3c",
+                "surface-container-low": "#1c1b1b",
+                "error": "#ffb4ac",
+                "secondary-container": "#454747",
+                "on-secondary-container": "#b4b5b5",
+                "on-primary": "#690006",
+                "inverse-surface": "#e5e2e1",
+                "outline": "#ae8883",
+                "error-container": "#93000a",
+                "on-primary-fixed": "#410002",
+                "tertiary": "#c8c6c5",
+                "surface-dim": "#131313",
+                "tertiary-container": "#747373",
+                "primary-fixed-dim": "#ffb4ac",
+                "on-error": "#690005",
+                "surface-variant": "#353534",
+                "surface-container-lowest": "#0e0e0e",
+                "background": "#131313",
+                "primary-container": "#e31b23",
+                "tertiary-fixed": "#e5e2e1",
+                "on-tertiary": "#313030",
+                "primary-fixed": "#ffdad6",
+                "on-tertiary-fixed": "#1c1b1b",
+                "on-surface-variant": "#e7bdb8",
+                "on-primary-fixed-variant": "#93000d",
+                "on-primary-container": "#fff9f8",
+                "inverse-on-surface": "#313030",
+                "on-secondary": "#2f3131",
+                "on-secondary-fixed-variant": "#454747",
+                "surface-tint": "#ffb4ac",
+                "surface-container-high": "#2a2a2a",
+                "surface": "#131313",
+                "secondary": "#c6c6c7",
+                "on-tertiary-fixed-variant": "#474746",
+                "on-background": "#e5e2e1",
+                "accent-red": "#e31b23"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+          sm: "16px",
+          base: "4px",
+          xs: "8px",
+          md: "24px",
+          xl: "64px",
+          "margin-desktop": "48px",
+          gutter: "20px",
+          lg: "40px",
+          "margin-mobile": "16px"
+        },
+        "fontFamily": {
+                "headline": [
+                        "Anybody"
+                ],
+                "display": [
+                        "Anybody"
+                ],
+                "body": [
+                        "Anybody"
+                ],
+                "label": [
+                        "Anybody"
+                ],
+                "body-lg": ["Anybody"],
+                "body-md": ["Anybody"],
+                "display-xl": ["Anybody"],
+                "headline-lg": ["Anybody"],
+                "headline-lg-mobile": ["Anybody"],
+                "headline-md": ["Anybody"],
+                "label-bold": ["Anybody"],
+                "label-sm": ["Anybody"]
+        },
+        "fontSize": {
+          "body-lg": ["18px", {lineHeight: "28px", fontWeight: "400"}],
+          "body-md": ["16px", {lineHeight: "24px", fontWeight: "400"}],
+          "display-xl": ["80px", {lineHeight: "80px", letterSpacing: "-0.04em", fontWeight: "900"}],
+          "headline-lg": ["48px", {lineHeight: "52px", letterSpacing: "-0.02em", fontWeight: "800"}],
+          "headline-lg-mobile": ["32px", {lineHeight: "36px", letterSpacing: "-0.02em", fontWeight: "800"}],
+          "headline-md": ["24px", {lineHeight: "28px", fontWeight: "700"}],
+          "label-bold": ["14px", {lineHeight: "16px", fontWeight: "700"}],
+          "label-sm": ["12px", {lineHeight: "14px", fontWeight: "500"}]
+        }
+      },
+    },
+  }
+</script>
+</head>
+<body class="bg-background font-body-md text-on-background"><div class="w-full bg-accent-red py-3 px-margin-mobile lg:px-margin-desktop flex items-center justify-center relative z-[60] shadow-[0_0_20px_rgba(227,27,35,0.6)] animate-pulse">
+  <span class="font-headline-md text-white uppercase tracking-widest text-center drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+    Coming to Downtown Dublin August 2026!
+  </span>
+</div>
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/5" style="top: 52px;">
+<div class="h-20 max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between">
+<div class="flex items-center gap-4">
+<img alt="The Getaway Logo" class="h-8 w-auto object-contain logo-neon-red" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaurfHZ7Fjvr1z5JLMmnIs58TEjsIP0gzufD8Mq4JVv8_1y0oNxqsiqF0DChChReLcEWXoCYiOQh9ByLWHpn4o896IQBpcij199VM4885QBPk5gkesuCwdSNDR3XvPmrjWlMRvEa3VqxVD9qO4otD1Nwbn4e4OJ3cwhdFFBANASAvfYrEGRpAOixCwpdEWz1zH1-Us-g1gxGahnfoYPONSGxey7HG6tkN2Nmlzd6zORH8ZnNBKPEhWovPC95_l6X5yMbo">
+<span class="font-headline-md text-headline-md text-primary-container tracking-tighter uppercase italic sr-only">THE GETAWAY</span>
+</div>
+<nav class="hidden lg:flex items-center gap-gutter">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-accent-red transition-all uppercase tracking-widest" href="#">Home</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-accent-red transition-all uppercase tracking-widest" href="#">MACHINEs</a>
+
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-accent-red transition-all uppercase tracking-widest" href="#">EVENTS</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-accent-red transition-all uppercase tracking-widest" href="#">Location</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-accent-red flex items-center justify-center neon-glow-red cursor-pointer transition-all hover:scale-110">
+<span class="material-symbols-outlined text-white text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="w-full pt-40">
+<div class="flex flex-col w-full">
+<!-- Hero Section -->
+<section class="relative w-full overflow-hidden flex flex-col items-center justify-center -mt-20 pt-40 pb-32">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center scale-105 blur-sm opacity-30" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBmCS4NXKm_zX0E3JAegqDTkylVih0KFlp7F4zY07V7uBKZzC4NC20j-GuAHpxeNgNCNNfdrnl1R2x8sbta4oWDk2sITJeYIodtC9Kkg8wgASofi6OcPsNLc1OmOeYjTq_Db5IE8zo7Ergzn4Iyy4PseJcsKev-t2JdsurLsZ-kzsAy3tMAf69TBLhz7cfIUswVP3QV2-pX5BVC74d3e_VhT72G-uPJNN46Mq8F0zxXBRNz51-ZlfLkBg')"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background"></div>
+</div>
+<!-- Kinetic Grid Overlay with Red hints -->
+<div class="absolute inset-0 z-10 opacity-10" style="background-image: radial-gradient(circle, #e31b23 1px, transparent 1px); background-size: 50px 50px;"></div>
+<div class="relative z-20 max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop text-center">
+<div class="inline-block mb-6 px-4 py-1 border border-accent-red/30 rounded-full bg-surface-container-low/50 backdrop-blur-md">
+<span class="font-label-sm text-label-sm text-accent-red uppercase tracking-[0.3em] neon-text-red">The High Score Starts Here</span>
+</div>
+<h1 class="font-display-xl text-display-xl lg:text-[120px] text-white uppercase leading-none tracking-tighter mb-8 mix-blend-exclusion">
+            The Getaway<br>
+<span class="text-primary-container drop-shadow-[0_0_30px_rgba(227,27,35,0.6)]">Revolution</span>
+</h1>
+<p class="max-w-2xl mx-auto font-body-lg text-body-lg text-on-surface-variant mb-12">
+            Experience the city's premier pinball sanctuary. 40+ world-class tables, high-octane vibes, and a high-fidelity atmosphere where retro meets the bleeding edge.
+          </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<button class="group relative px-10 py-5 bg-primary-container text-white font-label-bold text-label-bold uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(227,27,35,0.4)]">
+<span class="relative z-10">View EVENTS</span>
+<div class="absolute inset-0 bg-white/20 scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+</button>
+<button class="px-10 py-5 border border-white text-white font-label-bold text-label-bold uppercase tracking-widest hover:bg-white hover:text-background transition-all backdrop-blur-sm">
+              View Machines
+            </button>
+</div>
+</div>
+<!-- Decorative Vertical Text -->
+<div class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block [writing-mode:vertical-rl] font-label-sm text-label-sm text-accent-red/40 tracking-[1em] uppercase">
+          Insert Coin // Play Again
+        </div>
+</section>
+<!-- Featured Machines Section -->
+<section class="w-full py-24 bg-surface-container-lowest">
+<div class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop">
+<div class="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8">
+<div class="space-y-4">
+<span class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest neon-text-red">— The Arsenal</span>
+<h2 class="font-headline-lg text-headline-lg text-white uppercase">Elite Playfields</h2>
+</div>
+<div class="flex gap-4">
+<div class="h-[2px] w-32 bg-accent-red self-center hidden md:block opacity-30"></div>
+<p class="font-body-md text-on-surface-variant max-w-xs">Curated collection of Stern, Williams, and Bally classics kept in tournament-ready condition.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Machine Card 1 -->
+<div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 border-primary-container/20 hover:border-primary-container/50">
+<div class="aspect-[4/5] w-full relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp0vtDxNVtxDF0jkD0WTJaT0KtKcpht_kCn1s04Cw_qLs3WmJmpMflpzr6L4ZsU-9oqo5FsvN6MdVtDgZBbcWC2Uyj3OSN1Aiwe-Y6DAw-Cyywp17jr6SqKCvLMUWu56ZlBcARCSu4q_KtXJRgk7BE2C2LWpy5GYWhoaPXQAGmSZGUAjPFDQCOOp90fhnPW-cd30w4MZroqzp4Iy4bAyFcQJEXGLVjn0v51YaJhaBBCurp7TMYVly07w">
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute top-4 right-4 bg-primary-container text-white px-3 py-1 font-label-bold text-[10px] tracking-widest">NEW</div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-white uppercase tracking-tight">Godzilla</h3>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-[10px] text-outline uppercase tracking-tighter">Difficulty</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 bg-primary-container shadow-[0_0_5px_rgba(227,27,35,0.8)]"></div>
+<div class="w-2 h-2 bg-primary-container shadow-[0_0_5px_rgba(227,27,35,0.8)]"></div>
+<div class="w-2 h-2 bg-primary-container shadow-[0_0_5px_rgba(227,27,35,0.8)]"></div>
+<div class="w-2 h-2 bg-primary-container/20"></div>
+</div>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2">Stern's masterpiece. Battle Kaiju across Tokyo in this high-intensity, multi-ball heavy table.</p>
+<button class="w-full py-3 border border-accent-red/30 hover:border-accent-red text-white transition-all font-label-sm text-label-sm uppercase tracking-widest flex items-center justify-center gap-2">
+                  View Stats <span class="material-symbols-outlined text-[16px] text-accent-red">analytics</span>
+</button>
+</div>
+</div>
+<!-- Machine Card 2 -->
+<div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 lg:-mt-12 border-white/20 hover:border-white/50">
+<div class="aspect-[4/5] w-full relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtYVCKPeNF1F8Nd2nX7AEcv61h7i9HBii1py9luiENlYXCZ6ApGP5dwBLNUB6_l9FgFfVTNppKdG7PIkzgJgNitNcLtwZVyd9mvsozI5Tuhm_CCmJkjN_hZoYgdA3JZbLaBzkjla1JHw9ka3TzmWdASgIbEBm1gPuYILQc_JoE8IVlzUq9iOAuHt42m6NiOPBY6aa21DOx66JrDqNxj6-Zwbg9QfgjinLc_V_nK0jNd85rRGLwsGA6Yg">
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-white uppercase tracking-tight">Jurassic Park</h3>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-[10px] text-outline uppercase tracking-tighter">Difficulty</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 bg-white shadow-[0_0_5px_rgba(255,255,255,0.8)]"></div>
+<div class="w-2 h-2 bg-white shadow-[0_0_5px_rgba(255,255,255,0.8)]"></div>
+<div class="w-2 h-2 bg-white shadow-[0_0_5px_rgba(255,255,255,0.8)]"></div>
+<div class="w-2 h-2 bg-white shadow-[0_0_5px_rgba(255,255,255,0.8)]"></div>
+</div>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2">A kinetic adventure 65 million years in the making. Precision shooting and deep rulesets.</p>
+<button class="w-full py-3 border border-primary-container/30 hover:border-primary-container text-primary-container transition-all font-label-sm text-label-sm uppercase tracking-widest flex items-center justify-center gap-2">
+                  View Stats <span class="material-symbols-outlined text-[16px]">analytics</span>
+</button>
+</div>
+</div>
+<!-- Machine Card 3 -->
+<div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 border-primary-container/20 hover:border-primary-container/50">
+<div class="aspect-[4/5] w-full relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcIOc_wGxxGK-saoDw4tXG_9dP6sSy1NqUhu2aKAohKwDUUzoHxq3WAUYViinGeywS_2phGr0B8eHXwgadqU7r_QzyIOGdPQ9rn_suX3hJlQZbc-O4Tl9Za_tlAdY-3BUBP3Sb8ZklczDxZDS_OUpGC5NlakyQjXc8WqpJ6N9XuU3oiWRAFqXTqOHeADibAYQ_8T1iHwFw1xTji69kR3KxKebDIIlHSzqPf-rAHWF7fnKczACL3D1PpQ">
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute top-4 right-4 bg-accent-red text-white px-3 py-1 font-label-bold text-[10px] tracking-widest">LEGEND</div>
+</div>
+<div class="p-8 space-y-4">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-white uppercase tracking-tight">Medieval Madness</h3>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-[10px] text-outline uppercase tracking-tighter">Difficulty</span>
+<div class="flex gap-1">
+<div class="w-2 h-2 bg-primary-container shadow-[0_0_5px_rgba(227,27,35,0.8)]"></div>
+<div class="w-2 h-2 bg-primary-container shadow-[0_0_5px_rgba(227,27,35,0.8)]"></div>
+<div class="w-2 h-2 bg-primary-container/20"></div>
+<div class="w-2 h-2 bg-primary-container/20"></div>
+</div>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant line-clamp-2">The undisputed king of the 90s. Storm the castle and rescue the damsel in this all-time classic.</p>
+<button class="w-full py-3 border border-accent-red/30 hover:border-accent-red text-white transition-all font-label-sm text-label-sm uppercase tracking-widest flex items-center justify-center gap-2">
+                  View Stats <span class="material-symbols-outlined text-[16px] text-accent-red">analytics</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Events & Membership Split -->
+<section class="w-full grid grid-cols-1 lg:grid-cols-2">
+<!-- Tournaments -->
+
+<!-- Membership -->
+
+</section>
+<!-- Location / Final CTA -->
+<section class="w-full py-24 relative overflow-hidden">
+<div class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 h-[500px] rounded-2xl overflow-hidden glass-card p-2 border-accent-red/20">
+<div class="w-full h-full rounded-xl bg-cover bg-center grayscale contrast-125 opacity-70 border border-white/5" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCfi2JRv87iqTFVGRonj2sCgrWZ9Rk2MmkXD6nHATatpKKt4qYfFoM3H5mZk7_1ILZecabho3BBpPXPIYNaFmskbtVr8n6LlNp-l0BKRHoXrLYn8UaRYyULifn-yoKNdED497jwuM1PS77GEuPCf3Yk3HGloW81xhPKDglx9R6dhdYzkzndDqEPG7V5tFlPoPGyY-_01XldvRlfTZ_bqCHy8Z5-DXidRcsOUYSym_XAghRQ-UP0agALPw')"></div>
+</div>
+<div class="lg:col-span-5 space-y-8">
+<img alt="The Getaway" class="h-16 w-auto logo-neon-red" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCAIH1I1SBZUFNYEhom_gx0R-G7DmQTQpFOfou-exgpn093dowqjy2g0DeveL4XxIjikXR5fFdns-QtWKnKTCRGmXmzQcFYpRhrwBV-OaQ-bI1ETsBxlRtPQ_0uKWqENBYyLvWYkhWYCdzgIZjb8w1LVWS4NJH4P0BJ7IaEZIFx9mUxkVilJGxvuTf2E6UXKhYTGRsw6abNsiGBnPSVXPNm5IxOtmYo41Pj2TaX9NkTrhv-eqOR8WOfrHVgO3I1IkkekM">
+<h2 class="font-headline-lg text-headline-lg text-white uppercase">Find the&nbsp;<span class="text-accent-red neon-text-red">Vibe</span></h2>
+<p class="font-body-lg text-on-surface-variant">Located in the heart of the Pixel District. Look for the glowing red signage of The Getaway.</p>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-4 text-white">
+<span class="material-symbols-outlined text-accent-red neon-text-red">location_on</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider"><div class="">6890 Village Parkway, Dublin, CA 94568</div></span>
+</div>
+<div class="flex items-center gap-4 text-white">
+<span class="material-symbols-outlined text-accent-red neon-text-red">call</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">555-GETAWAY</span>
+</div>
+</div>
+<div class="pt-8 flex gap-6">
+<a class="text-primary-container hover:text-white transition-colors transform hover:scale-125 duration-300" href="#">
+<span class="material-symbols-outlined text-[32px]">sports_esports</span>
+</a>
+<a class="text-primary-container hover:text-white transition-colors transform hover:scale-125 duration-300" href="#">
+<span class="material-symbols-outlined text-[32px]">nightlife</span>
+</a>
+<a class="text-primary-container hover:text-white transition-colors transform hover:scale-125 duration-300" href="#">
+<span class="material-symbols-outlined text-[32px]">local_bar</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<footer class="w-full bg-surface-container-lowest py-margin-desktop mt-gutter border-t border-white/5">
+<div class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-primary-container">Arcade Hours</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide leading-relaxed">MON - THU: 4PM - 12AM<br>FRI: 4PM - 2AM<br>SAT: 12PM - 2AM<br>SUN: 12PM - 10PM</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-accent-red neon-text-red">Join the Circuit</h4>
+<div class="flex flex-col gap-2">
+<input class="bg-surface-container-high border-b border-outline p-2 font-body-md text-on-surface focus:border-accent-red focus:outline-none transition-all placeholder:text-outline-variant" placeholder="Enter email for news..." type="email">
+<button class="bg-primary-container text-white font-label-bold text-label-bold py-3 px-4 uppercase tracking-tighter neon-glow-primary transition-all">Subscribe</button>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline-md text-headline-md text-primary-container">Connect</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-accent-red cursor-pointer transition-colors">share</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-accent-red cursor-pointer transition-colors">forum</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-accent-red cursor-pointer transition-colors">play_circle</span>
+</div>
+<p class="font-body-md text-on-surface-variant"></p><div class="">6890 Village Parkway, Dublin, CA 94568</div><p></p>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 text-center font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
+        © 2026 THE GETAWAY</div>
+</div>
+</footer>
+<script>
+    // Micro-interaction: Power Meter Animation
+    document.querySelectorAll('.glass-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        const glow = card.querySelector('.bg-primary-container');
+        if (glow) {
+          glow.style.boxShadow = '0 0 30px rgba(227,27,35,0.8)';
+        }
+        const redGlow = card.querySelector('.bg-accent-red');
+        if (redGlow) {
+          redGlow.style.boxShadow = '0 0 30px rgba(227,27,35,0.8)';
+        }
+      });
+      card.addEventListener('mouseleave', () => {
+        const glow = card.querySelector('.bg-primary-container');
+        if (glow) {
+          glow.style.boxShadow = 'none';
+        }
+        const redGlow = card.querySelector('.bg-accent-red');
+        if (redGlow) {
+          redGlow.style.boxShadow = '0 0 10px rgba(227,27,35,0.3)';
+        }
+      });
+    });
+  </script>
+
+
+
+
+
+
+</body></html>
