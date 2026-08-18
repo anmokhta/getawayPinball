@@ -74,15 +74,83 @@ class SiteHeader extends HTMLElement {
             <a href="${SITE_BASE}menu/" data-nav-page="menu" class="${NAV_LINK_CLASSES}">Menu</a>
             <a href="${SITE_BASE}index.html#location" data-nav-location class="${NAV_LINK_CLASSES}">Location</a>
           </nav>
+
+          <button
+            type="button"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="mobile-nav-panel"
+            aria-label="Toggle navigation menu"
+            class="lg:hidden flex items-center justify-center w-11 h-11 text-white hover:text-accent-red transition-colors"
+          >
+            <span class="material-symbols-outlined text-[32px]" data-nav-toggle-icon>menu</span>
+          </button>
         </div>
+
+        <nav
+          id="mobile-nav-panel"
+          data-nav-panel
+          class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-surface/95 backdrop-blur-xl border-t border-white/5 px-margin-mobile py-6 gap-6 max-h-[calc(100vh-5rem)] overflow-y-auto"
+        >
+          <a href="${SITE_BASE}index.html" data-nav-home data-nav-page="home" class="${NAV_LINK_CLASSES}">Home</a>
+          <a href="${SITE_BASE}machines/" data-nav-page="machines" class="${NAV_LINK_CLASSES}">Machines</a>
+          <a href="${SITE_BASE}events/" data-nav-page="events" class="${NAV_LINK_CLASSES}">Events</a>
+          <a href="${SITE_BASE}menu/" data-nav-page="menu" class="${NAV_LINK_CLASSES}">Menu</a>
+          <a href="${SITE_BASE}index.html#location" data-nav-location class="${NAV_LINK_CLASSES}">Location</a>
+        </nav>
       </header>
     `;
 
-    const activeLink = this.querySelector(`nav a[data-nav-page="${getCurrentNavPage()}"]`);
-    if (activeLink) {
+    this.querySelectorAll(`nav a[data-nav-page="${getCurrentNavPage()}"]`).forEach((activeLink) => {
       activeLink.className = NAV_LINK_ACTIVE_CLASSES;
       activeLink.setAttribute("aria-current", "page");
-    }
+    });
+
+    this.initMobileNavToggle();
+  }
+
+  initMobileNavToggle() {
+    const toggleButton = this.querySelector("[data-nav-toggle]");
+    const toggleIcon = this.querySelector("[data-nav-toggle-icon]");
+    const panel = this.querySelector("[data-nav-panel]");
+    if (!toggleButton || !panel) return;
+
+    const closeMenu = () => {
+      panel.classList.add("hidden");
+      panel.classList.remove("flex");
+      toggleButton.setAttribute("aria-expanded", "false");
+      if (toggleIcon) toggleIcon.textContent = "menu";
+    };
+
+    const openMenu = () => {
+      panel.classList.remove("hidden");
+      panel.classList.add("flex");
+      toggleButton.setAttribute("aria-expanded", "true");
+      if (toggleIcon) toggleIcon.textContent = "close";
+    };
+
+    toggleButton.addEventListener("click", () => {
+      const isOpen = toggleButton.getAttribute("aria-expanded") === "true";
+      if (isOpen) closeMenu();
+      else openMenu();
+    });
+
+    panel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", (event) => {
+      if (toggleButton.getAttribute("aria-expanded") !== "true") return;
+      if (this.contains(event.target)) return;
+      closeMenu();
+    });
+
+    // Collapse the mobile panel automatically if the viewport grows past
+    // the "lg" breakpoint (e.g. rotating a tablet, resizing a window),
+    // since the desktop nav becomes visible again at that point.
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024) closeMenu();
+    });
   }
 }
 
