@@ -22,7 +22,10 @@
 */
 const SITE_BASE = (() => {
   const scriptSrc = document.currentScript?.getAttribute("src") || "js/partials.js";
-  return scriptSrc.replace(/js\/partials\.js$/, "");
+  // Strips an optional cache-busting "?v=..." query string too, since script
+  // tags append one (e.g. "js/partials.js?v=2") to force browsers/CDNs to
+  // fetch the latest file after a deploy instead of serving a stale cached copy.
+  return scriptSrc.replace(/js\/partials\.js(\?.*)?$/, "");
 })();
 
 const NAV_LINK_CLASSES =
@@ -52,7 +55,7 @@ class SiteHeader extends HTMLElement {
           id="promo-banner"
           class="w-full bg-accent-red py-3 px-margin-mobile lg:px-margin-desktop flex items-center justify-center shadow-[0_0_20px_rgba(227,27,35,0.6)] animate-pulse"
         >
-          <span class="font-headline-md text-white uppercase tracking-widest text-center drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+          <span class="text-[11px] font-bold tracking-normal sm:font-headline-md sm:tracking-widest text-white uppercase whitespace-nowrap text-center drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
             Coming to Downtown Dublin August 2026!
           </span>
         </div>

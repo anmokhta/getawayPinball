@@ -20,13 +20,13 @@
 
     <!-- Tailwind (Play CDN) + local theme config -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="js/tailwind-config.js"></script>
+    <script src="js/tailwind-config.js?v=2"></script>
 
     <!-- Shared header/footer templates (must load before <site-header>/<site-footer> are parsed) -->
-    <script src="js/partials.js"></script>
+    <script src="js/partials.js?v=2"></script>
 
     <!-- Site styles -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=2" />
   </head>
   <body class="bg-background font-body-md text-on-background">
     <site-header></site-header>
@@ -62,7 +62,7 @@
             </div>
 
             <h1
-              class="font-display-xl text-[65px] font-black lg:text-[120px] text-white uppercase leading-none tracking-tighter mb-8 mix-blend-exclusion"
+              class="font-display-xl text-[44px] font-black lg:text-[120px] text-white uppercase leading-none tracking-tighter mb-8 mix-blend-exclusion"
             >
               The Getaway<br />
               <span
@@ -220,7 +220,7 @@
 
     <site-footer></site-footer>
 
-    <script src="js/nav.js"></script>
-    <script src="js/pages/home.js" type="module"></script>
+    <script src="js/nav.js?v=2"></script>
+    <script src="js/pages/home.js?v=2" type="module"></script>
   </body>
 </html>
