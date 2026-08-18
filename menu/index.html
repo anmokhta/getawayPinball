@@ -34,45 +34,46 @@
     <main class="w-full">
       <div class="flex flex-col w-full">
         <!-- Hero -->
-        <div class="max-w-[1440px] mx-auto w-full px-margin-mobile lg:px-margin-desktop pt-margin-mobile lg:pt-margin-desktop">
-          <section class="relative w-full h-[60vh] md:h-[70vh] rounded-xl overflow-hidden">
+        <section
+          class="relative w-full overflow-hidden flex flex-col justify-center -mt-20 pt-40 pb-32 min-h-screen"
+        >
+          <div class="absolute inset-0 z-0">
             <div
-              class="hero-bg-menu absolute inset-0 w-full h-full bg-cover bg-center scale-105 blur-sm opacity-30"
+              class="hero-bg-menu w-full h-full bg-cover bg-center scale-105 blur-sm opacity-30"
             ></div>
             <div
-              class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"
+              class="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background"
             ></div>
-            <div
-              class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"
-            ></div>
+          </div>
 
-            <div class="absolute bottom-8 left-6 md:bottom-12 md:left-12 max-w-3xl pr-6">
-              <div class="flex items-center gap-4 mb-4">
-                <span class="w-12 h-px bg-accent-red neon-glow-red"></span>
-                <span
-                  class="font-label-sm text-label-sm text-accent-red uppercase tracking-[0.3em] neon-text-red"
-                  >— The Refill</span
-                >
-              </div>
-              <h1
-                class="font-display-xl text-display-xl text-white uppercase leading-none tracking-tighter mb-6 drop-shadow-lg"
+          <div
+            class="relative z-20 max-w-[1440px] mx-auto w-full pr-margin-mobile lg:pr-margin-desktop pl-8 md:pl-16 lg:pl-24"
+          >
+            <div class="flex items-center gap-4 mb-4">
+              <span class="w-12 h-px bg-accent-red neon-glow-red"></span>
+              <span
+                class="font-label-sm text-label-sm text-accent-red uppercase tracking-[0.3em] neon-text-red"
+                >— The Refill</span
               >
-                Fuel Your<br />
-                <span class="text-accent-red neon-text-red">Next Run</span>
-              </h1>
-              <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                Signature mixes, local circuits, and high-energy power-ups designed to keep
-                your reflexes sharp and your score climbing.
-              </p>
             </div>
-
-            <div
-              class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block [writing-mode:vertical-rl] font-label-sm text-label-sm text-accent-red/40 tracking-[1em] uppercase"
+            <h1
+              class="font-display-xl text-display-xl text-white uppercase leading-none tracking-tighter mb-6 drop-shadow-lg"
             >
-              Last Call // Stay Charged
-            </div>
-          </section>
-        </div>
+              Fuel Your<br />
+              <span class="text-accent-red neon-text-red">Next Run</span>
+            </h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+              Signature mixes, local circuits, and high-energy power-ups designed to keep
+              your reflexes sharp and your score climbing.
+            </p>
+          </div>
+
+          <div
+            class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block [writing-mode:vertical-rl] font-label-sm text-label-sm text-accent-red/40 tracking-[1em] uppercase"
+          >
+            Last Call // Stay Charged
+          </div>
+        </section>
 
         <!-- Drink Menu -->
         <section class="w-full py-24">
