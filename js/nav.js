@@ -18,7 +18,22 @@
      reload (or do nothing) — instead, intercept it and smooth-scroll to
      the top.
    - On any other page, let the browser navigate to Home as normal.
+
+   Directory-style links (e.g. "machines/") opened via file:// (double-
+   clicking index.html, rather than going through a real web server) don't
+   auto-resolve to that folder's index.html the way a server does — the
+   browser just shows its raw folder listing. There's no server on
+   file:// to fix that server-side, so when we detect that protocol we
+   rewrite these clicks in JS to go straight to the actual "index.html"
+   file instead. This is a no-op on http(s):// (GitHub Pages, `npm run
+   dev`, etc.), where the browser already gets this right on its own.
    ========================================================================== */
+
+function isRelativeDirectoryLink(href) {
+  if (!href || href.startsWith("#")) return false;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(href)) return false; // absolute URL (http:, mailto:, etc.)
+  return href.endsWith("/");
+}
 
 document.addEventListener("click", (event) => {
   const locationLink = event.target.closest("a[data-nav-location]");
@@ -41,5 +56,15 @@ document.addEventListener("click", (event) => {
 
     event.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+
+  if (window.location.protocol === "file:") {
+    const link = event.target.closest("a[href]");
+    const href = link?.getAttribute("href");
+    if (isRelativeDirectoryLink(href)) {
+      event.preventDefault();
+      window.location.href = href + "index.html";
+    }
   }
 });

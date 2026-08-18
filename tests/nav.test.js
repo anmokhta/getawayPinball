@@ -32,6 +32,7 @@ describe("shared header/footer template (js/partials.js)", () => {
     { path: "index.html", depthPrefix: "", activePage: "home" },
     { path: "machines/", depthPrefix: "../", activePage: "machines" },
     { path: "events/", depthPrefix: "../", activePage: "events" },
+    { path: "menu/", depthPrefix: "../", activePage: "menu" },
   ];
 
   for (const { path: pagePath, depthPrefix, activePage } of pages) {
@@ -52,6 +53,7 @@ describe("shared header/footer template (js/partials.js)", () => {
           { text: "Home", href: `${depthPrefix}index.html` },
           { text: "Machines", href: `${depthPrefix}machines/` },
           { text: "Events", href: `${depthPrefix}events/` },
+          { text: "Menu", href: `${depthPrefix}menu/` },
           { text: "Location", href: `${depthPrefix}index.html#location` },
         ],
         `nav hrefs should be prefixed with "${depthPrefix}" on ${pagePath}`

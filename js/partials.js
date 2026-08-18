@@ -30,12 +30,13 @@ const NAV_LINK_CLASSES =
 const NAV_LINK_ACTIVE_CLASSES = "font-label-sm text-label-sm text-accent-red neon-text-red uppercase tracking-widest";
 
 // Which nav item corresponds to the page currently being viewed. Only
-// Home/Machines/Events are real pages — "Location" is just a section of
-// Home, so it's never marked active.
+// Home/Machines/Events/Menu are real pages — "Location" is just a section
+// of Home, so it's never marked active.
 function getCurrentNavPage() {
   const path = window.location.pathname;
   if (path.includes("/machines/")) return "machines";
   if (path.includes("/events/")) return "events";
+  if (path.includes("/menu/")) return "menu";
   return "home";
 }
 
@@ -70,6 +71,7 @@ class SiteHeader extends HTMLElement {
             <a href="${SITE_BASE}index.html" data-nav-home data-nav-page="home" class="${NAV_LINK_CLASSES}">Home</a>
             <a href="${SITE_BASE}machines/" data-nav-page="machines" class="${NAV_LINK_CLASSES}">Machines</a>
             <a href="${SITE_BASE}events/" data-nav-page="events" class="${NAV_LINK_CLASSES}">Events</a>
+            <a href="${SITE_BASE}menu/" data-nav-page="menu" class="${NAV_LINK_CLASSES}">Menu</a>
             <a href="${SITE_BASE}index.html#location" data-nav-location class="${NAV_LINK_CLASSES}">Location</a>
           </nav>
         </div>
