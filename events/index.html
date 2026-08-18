@@ -33,21 +33,37 @@
 
     <main class="w-full">
       <section
-        class="w-full min-h-[60vh] flex flex-col items-center justify-center text-center py-32 px-margin-mobile"
+        class="relative w-full min-h-[60vh] overflow-hidden flex flex-col items-center justify-center text-center py-32 px-margin-mobile"
       >
-        <span
-          class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest neon-text-red mb-4"
-          >— The Circuit</span
+        <div class="absolute inset-0 z-0">
+          <div
+            class="hero-bg-home w-full h-full bg-cover bg-center scale-105 blur-sm opacity-30"
+          ></div>
+          <div
+            class="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background"
+          ></div>
+        </div>
+
+        <div class="relative z-20">
+          <span
+            class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest neon-text-red mb-4"
+            >— The Circuit</span
+          >
+          <h1 class="font-display-xl text-display-xl text-white uppercase tracking-tighter">
+            Coming Soon
+          </h1>
+        </div>
+
+        <div
+          class="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block [writing-mode:vertical-rl] font-label-sm text-label-sm text-accent-red/40 tracking-[1em] uppercase"
         >
-        <h1 class="font-display-xl text-display-xl text-white uppercase tracking-tighter">
-          Coming Soon
-        </h1>
+          League Nights // Soon
+        </div>
       </section>
     </main>
 
     <site-footer></site-footer>
 
     <script src="../js/nav.js"></script>
-    <script src="../js/main.js" defer></script>
   </body>
 </html>

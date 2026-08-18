@@ -65,3 +65,21 @@
 .logo-neon-red {
   filter: drop-shadow(0 0 12px rgba(227, 27, 35, 0.5));
 }
+
+/* --- Page hero backgrounds (paths are relative to this CSS file) --------- */
+.hero-bg-home {
+  background-image: url("../assets/images/hero-home.jpg");
+}
+
+.hero-bg-machines {
+  background-image: url("../assets/images/hero-machines.png");
+}
+
+.hero-bg-menu {
+  background-image: url("../assets/images/hero-menu.png");
+}
+
+.hero-dot-overlay {
+  background-image: radial-gradient(circle, #e31b23 1px, transparent 1px);
+  background-size: 50px 50px;
+}
