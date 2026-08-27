@@ -83,12 +83,9 @@
               <div class="lg:col-span-7">
                 <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
                   <div class="space-y-4">
-                    <span
-                      class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest neon-text-red"
-                      >— Craft Selection</span
-                    >
+
                     <h2 class="font-headline-lg text-headline-lg text-white uppercase">
-                      Canned Beverages
+                      Alcoholic Beverages
                     </h2>
                   </div>
                   <div class="flex gap-4">
@@ -96,114 +93,21 @@
                       class="h-[2px] w-32 bg-accent-red self-center hidden md:block opacity-30"
                     ></div>
                     <p class="font-body-md text-on-surface-variant max-w-xs">
-                      Local breweries, hand-picked seltzers, and crisp ciders — always cold,
+                      Local breweries, hand-picked seltzers, and crisp ciders - always cold,
                       always canned.
                     </p>
                   </div>
                 </div>
 
-                <div class="space-y-8">
-                  <div>
-                    <h4
-                      class="font-label-sm text-label-sm text-accent-red uppercase tracking-[0.2em] mb-4 border-b border-surface-container-highest pb-2"
-                    >
-                      Hops &amp; Malt
-                    </h4>
-                    <ul class="space-y-4">
-                      <li class="flex items-center justify-between group">
-                        <div class="flex items-center gap-4">
-                          <span
-                            class="font-headline text-lg font-bold uppercase text-on-surface group-hover:text-accent-red transition-colors"
-                            >Turbo Lag IPA</span
-                          >
-                          <span class="font-label-sm text-label-sm text-on-surface-variant"
-                            >12oz Can</span
-                          >
-                        </div>
-                        <div
-                          class="flex-grow h-px bg-surface-container mx-4 group-hover:bg-accent-red/30 transition-colors"
-                        ></div>
-                        <span
-                          class="font-headline text-4xl leading-none text-on-surface-variant group-hover:text-accent-red transition-colors"
-                          >•</span
-                        >
-                      </li>
-                      <li class="flex items-center justify-between group">
-                        <div class="flex items-center gap-4">
-                          <span
-                            class="font-headline text-lg font-bold uppercase text-on-surface group-hover:text-accent-red transition-colors"
-                            >Piston Pilsner</span
-                          >
-                          <span class="font-label-sm text-label-sm text-on-surface-variant"
-                            >16oz Tallboy</span
-                          >
-                        </div>
-                        <div
-                          class="flex-grow h-px bg-surface-container mx-4 group-hover:bg-accent-red/30 transition-colors"
-                        ></div>
-                        <span
-                          class="font-headline text-4xl leading-none text-on-surface-variant group-hover:text-accent-red transition-colors"
-                          >•</span
-                        >
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4
-                      class="font-label-sm text-label-sm text-accent-red uppercase tracking-[0.2em] mb-4 border-b border-surface-container-highest pb-2"
-                    >
-                      Seltzer
-                    </h4>
-                    <ul class="space-y-4">
-                      <li class="flex items-center justify-between group">
-                        <div class="flex items-center gap-4">
-                          <span
-                            class="font-headline text-lg font-bold uppercase text-on-surface group-hover:text-accent-red transition-colors"
-                            >Electric Lime Seltzer</span
-                          >
-                          <span class="font-label-sm text-label-sm text-on-surface-variant"
-                            >5.0% ABV</span
-                          >
-                        </div>
-                        <div
-                          class="flex-grow h-px bg-surface-container mx-4 group-hover:bg-accent-red/30 transition-colors"
-                        ></div>
-                        <span
-                          class="font-headline text-4xl leading-none text-on-surface-variant group-hover:text-accent-red transition-colors"
-                          >•</span
-                        >
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4
-                      class="font-label-sm text-label-sm text-accent-red uppercase tracking-[0.2em] mb-4 border-b border-surface-container-highest pb-2"
-                    >
-                      Cider
-                    </h4>
-                    <ul class="space-y-4">
-                      <li class="flex items-center justify-between group">
-                        <div class="flex items-center gap-4">
-                          <span
-                            class="font-headline text-lg font-bold uppercase text-on-surface group-hover:text-accent-red transition-colors"
-                            >Hard Reset Apple</span
-                          >
-                          <span class="font-label-sm text-label-sm text-on-surface-variant"
-                            >Dry &amp; Crisp</span
-                          >
-                        </div>
-                        <div
-                          class="flex-grow h-px bg-surface-container mx-4 group-hover:bg-accent-red/30 transition-colors"
-                        ></div>
-                        <span
-                          class="font-headline text-4xl leading-none text-on-surface-variant group-hover:text-accent-red transition-colors"
-                          >•</span
-                        >
-                      </li>
-                    </ul>
-                  </div>
+                <div>
+                  <h4
+                    class="font-label-sm text-label-sm text-accent-red uppercase tracking-[0.2em] mb-4 border-b border-surface-container-highest pb-2"
+                  >
+                    Alcoholic
+                  </h4>
+                  <ul id="alcoholic-list" class="space-y-5">
+                    <li class="font-body-md text-on-surface-variant py-4">Loading menu&hellip;</li>
+                  </ul>
                 </div>
               </div>
 
@@ -221,41 +125,11 @@
                         >bolt</span
                       >
                       <h3 class="font-headline-md text-headline-md text-white uppercase">
-                        Non-Alcoholic
+                        Non-Alcoholic Beverages
                       </h3>
                     </div>
-                    <ul class="space-y-5">
-                      <li class="group">
-                        <div class="flex items-center justify-between mb-1">
-                          <span
-                            class="font-headline text-lg font-bold uppercase text-on-surface group-hover:text-accent-red transition-colors"
-                            >Redline Energy</span
-                          >
-                          <span
-                            class="font-headline text-4xl leading-none text-on-surface-variant group-hover:text-accent-red transition-colors"
-                            >•</span
-                          >
-                        </div>
-                        <p class="font-body-md text-on-surface-variant">
-                          House-made citrus energy blend, zero sugar.
-                        </p>
-                      </li>
-
-                      <li class="group">
-                        <div class="flex items-center justify-between mb-1">
-                          <span
-                            class="font-headline text-lg font-bold uppercase text-on-surface group-hover:text-accent-red transition-colors"
-                            >Artisanal Cola</span
-                          >
-                          <span
-                            class="font-headline text-4xl leading-none text-on-surface-variant group-hover:text-accent-red transition-colors"
-                            >•</span
-                          >
-                        </div>
-                        <p class="font-body-md text-on-surface-variant">
-                          Locally brewed, cane sugar.
-                        </p>
-                      </li>
+                    <ul id="non-alcoholic-list" class="space-y-5">
+                      <li class="font-body-md text-on-surface-variant py-4">Loading menu&hellip;</li>
                     </ul>
                   </div>
                 </div>
@@ -269,5 +143,6 @@
     <site-footer></site-footer>
 
     <script src="../js/nav.js?v=2"></script>
+    <script src="../js/pages/menu.js?v=1" type="module"></script>
   </body>
 </html>

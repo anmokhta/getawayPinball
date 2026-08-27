@@ -58,7 +58,7 @@ export function renderMachineCard(machine, { variant = "full", index = 0 } = {})
     : "";
 
   return `
-    <div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 ${borderClasses}${extraCardClass}">
+    <div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 ${borderClasses}${extraCardClass}" data-manufacturer="${escapeHtml(machine.manufacturerSlug)}">
       <div class="${aspectClass} w-full relative overflow-hidden">
         <img
           src="${escapeHtml(machine.image)}"
@@ -69,7 +69,7 @@ export function renderMachineCard(machine, { variant = "full", index = 0 } = {})
         ${badge}
       </div>
       <div class="p-8 space-y-4">
-        <h3 class="font-headline-md text-headline-md text-white uppercase tracking-tight">
+        <h3 class="name font-headline-md text-headline-md text-white uppercase tracking-tight">
           ${escapeHtml(machine.name)}
         </h3>
         <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
@@ -117,25 +117,49 @@ export function initCardHoverGlow() {
   });
 }
 
-export function initMachineSearch(gridEl) {
-  const machineSearch = document.getElementById("machine-search");
-  const machineSearchEmpty = document.getElementById("machine-search-empty");
-  if (!machineSearch || !gridEl) return;
+const FILTER_ACTIVE_CLASSES = ["bg-primary-container", "text-white", "shadow-[0_0_15px_rgba(227,27,35,0.4)]"];
+const FILTER_INACTIVE_CLASSES = ["bg-transparent", "border", "border-outline", "text-on-surface"];
 
-  machineSearch.addEventListener("input", () => {
-    const query = machineSearch.value.trim().toLowerCase();
-    const cards = Array.from(gridEl.children);
-    let visibleCount = 0;
+export function initMachineFilters(gridContainerEl) {
+  if (!gridContainerEl || typeof List === "undefined") return null;
 
-    cards.forEach((card) => {
-      const text = card.textContent.toLowerCase();
-      const matches = query === "" || text.includes(query);
-      card.classList.toggle("hidden", !matches);
-      if (matches) visibleCount += 1;
+  const searchInput = document.getElementById("machine-search");
+  const emptyMessage = document.getElementById("machine-search-empty");
+  const filterButtons = Array.from(document.querySelectorAll("#machine-filters .filter-btn"));
+
+  const machineList = new List(gridContainerEl.id, {
+    valueNames: ["name", { data: ["manufacturer"] }],
+  });
+
+  let activeFilter = "all";
+
+  function applyFilters() {
+    const query = (searchInput?.value || "").trim().toLowerCase();
+
+    machineList.filter((item) => {
+      const values = item.values();
+      const matchesFilter = activeFilter === "all" || values.manufacturer === activeFilter;
+      const matchesQuery = query === "" || values.name.trim().toLowerCase().includes(query);
+      return matchesFilter && matchesQuery;
     });
 
-    if (machineSearchEmpty) {
-      machineSearchEmpty.classList.toggle("hidden", visibleCount !== 0);
-    }
+    emptyMessage?.classList.toggle("hidden", machineList.matchingItems.length !== 0);
+  }
+
+  searchInput?.addEventListener("input", applyFilters);
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      activeFilter = button.dataset.filter;
+      filterButtons.forEach((btn) => {
+        const isActive = btn === button;
+        btn.classList.remove(...(isActive ? FILTER_INACTIVE_CLASSES : FILTER_ACTIVE_CLASSES));
+        btn.classList.add(...(isActive ? FILTER_ACTIVE_CLASSES : FILTER_INACTIVE_CLASSES));
+        btn.setAttribute("aria-pressed", String(isActive));
+      });
+      applyFilters();
+    });
   });
+
+  return machineList;
 }

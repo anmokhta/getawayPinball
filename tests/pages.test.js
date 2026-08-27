@@ -100,6 +100,18 @@ describe("Menu page", () => {
 
   beforeEach(async () => {
     page = await newPage(browser);
+    // The menu page's live fetch normally hits the published Google Sheet
+    // directly; block that here so the test deterministically exercises the
+    // committed data/drinks.json fallback instead of depending on network
+    // access or the sheet's current live contents.
+    await page.setRequestInterception(true);
+    page.on("request", (request) => {
+      if (request.url().includes("docs.google.com")) {
+        request.abort();
+      } else {
+        request.continue();
+      }
+    });
     await page.goto(`${server.url}/menu/`, { waitUntil: "networkidle0" });
   });
 
@@ -117,12 +129,18 @@ describe("Menu page", () => {
     assert.equal(eyebrow, "— The Refill");
   });
 
-  test("lists canned beverages and non-alcoholic options", async () => {
-    const bodyText = await page.evaluate(() => document.querySelector("main")?.textContent || "");
-    assert.match(bodyText, /Canned Beverages/);
-    assert.match(bodyText, /Turbo Lag IPA/);
-    assert.match(bodyText, /Non-Alcoholic/);
-    assert.match(bodyText, /Redline Energy/);
+  test("lists alcoholic and non-alcoholic drinks from the fallback menu data", async () => {
+    const alcoholicText = await page.evaluate(
+      () => document.querySelector("#alcoholic-list")?.textContent || ""
+    );
+    assert.match(alcoholicText, /Paperback Bunny With A Chainsaw/);
+    assert.match(alcoholicText, /\$11/);
+
+    const nonAlcoholicText = await page.evaluate(
+      () => document.querySelector("#non-alcoholic-list")?.textContent || ""
+    );
+    assert.match(nonAlcoholicText, /Liquid Death/);
+    assert.match(nonAlcoholicText, /\$3/);
   });
 });
 

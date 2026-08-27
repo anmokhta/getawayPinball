@@ -1,15 +1,16 @@
-import { fetchMachines, renderMachineCard, initCardHoverGlow, initMachineSearch } from "../machine-card.js";
+import { fetchMachines, renderMachineCard, initCardHoverGlow, initMachineFilters } from "../machine-card.js";
 
 async function renderMachineGrid() {
   const grid = document.getElementById("machine-grid");
-  if (!grid) return;
+  const listEl = grid?.querySelector(".list");
+  if (!grid || !listEl) return;
 
   const machines = await fetchMachines();
-  grid.innerHTML = machines
+  listEl.innerHTML = machines
     .map((machine, index) => renderMachineCard(machine, { variant: "full", index }))
     .join("");
 
-  initMachineSearch(grid);
+  initMachineFilters(grid);
 }
 
 initCardHoverGlow();

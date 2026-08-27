@@ -1,0 +1,111 @@
+{
+  "alcoholic": [
+    {
+      "name": "Alvarado Howzit Punch",
+      "size": "16 oz",
+      "description": "Fruited Sour Ale w/Passionfruit, Orange & Guava",
+      "price": "$10"
+    },
+    {
+      "name": "Alvarado Mai Tai Pa",
+      "size": "16 oz",
+      "description": "Tropical TPA",
+      "price": "$10"
+    },
+    {
+      "name": "Alvarado Monterey Beer",
+      "size": "12 oz",
+      "description": "Lager",
+      "price": "$6"
+    },
+    {
+      "name": "Barrel House Sunny Daze Blonde",
+      "size": "12 oz",
+      "description": "Crisp & Easy Drinking Blonde Ale",
+      "price": "$7"
+    },
+    {
+      "name": "Brooklyn",
+      "size": "12 oz",
+      "description": "Grapefruit IPA N/A",
+      "price": "$6"
+    },
+    {
+      "name": "Calidad - Quality Cerveza",
+      "size": "12 oz",
+      "description": "Mexican-Style Lager",
+      "price": "$7"
+    },
+    {
+      "name": "Fort George - 3 Way",
+      "size": "16 oz",
+      "description": "IPA 16 oz West Coast India Pale Ale",
+      "price": "$10"
+    },
+    {
+      "name": "Great Notion Bubbs - Seltzer",
+      "size": "12 oz",
+      "description": "Blueberry & Lemon Hard Seltzer",
+      "price": "$8"
+    },
+    {
+      "name": "Great Notion Bubbs - Seltzer",
+      "size": "12 oz",
+      "description": "Pineapple & Mango Hard Seltzer",
+      "price": "$8"
+    },
+    {
+      "name": "Paperback Bunny With A Chainsaw",
+      "size": "16 oz",
+      "description": "Double Hazy IPA",
+      "price": "$11"
+    }
+  ],
+  "nonAlcoholic": [
+    {
+      "name": "7UP",
+      "size": "12 oz",
+      "price": "$2"
+    },
+    {
+      "name": "Brisk Ice Tea",
+      "size": "12 oz",
+      "price": "$2"
+    },
+    {
+      "name": "Coke",
+      "size": "12 oz",
+      "price": "$2"
+    },
+    {
+      "name": "Diet Coke",
+      "size": "12 oz",
+      "price": "$2"
+    },
+    {
+      "name": "Gatorade",
+      "size": "12 oz",
+      "price": "$2"
+    },
+    {
+      "name": "Jarritos",
+      "size": "17.7 oz",
+      "price": "$3"
+    },
+    {
+      "name": "Liquid Death",
+      "size": "12 oz",
+      "price": "$3"
+    },
+    {
+      "name": "Monster",
+      "size": "12 oz",
+      "price": "$3"
+    },
+    {
+      "name": "Water",
+      "size": "16.9 oz",
+      "price": "$1"
+    }
+  ]
+}

@@ -66,6 +66,19 @@
   filter: drop-shadow(0 0 12px rgba(227, 27, 35, 0.5));
 }
 
+/* Footer "Connect" social icons — solid PNG glyphs recolored via CSS mask
+   so they can inherit the same hover/transition treatment as the rest
+   of the site's icon set (e.g. the Material Symbols they replaced). */
+.social-icon {
+  display: inline-block;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
 /* --- Page hero backgrounds (paths are relative to this CSS file) --------- */
 .hero-bg-home {
   background-image: url("../assets/images/hero-home.jpg");

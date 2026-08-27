@@ -56,7 +56,7 @@ class SiteHeader extends HTMLElement {
           class="w-full h-11 bg-accent-red px-margin-mobile lg:px-margin-desktop flex items-center justify-center shadow-[0_0_20px_rgba(227,27,35,0.6)] animate-pulse"
         >
         <span class="font-headline-md text-[11px] font-bold tracking-normal sm:text-[13px] sm:tracking-widest text-white uppercase whitespace-nowrap text-center drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
-          Coming to Downtown Dublin August 2026!
+          Coming to Downtown Dublin Summer 2026!
           </span>
         </div>
 
@@ -164,17 +164,17 @@ class SiteFooter extends HTMLElement {
         <div class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div class="space-y-4">
-              <h4 class="font-headline-md text-headline-md text-primary-container">Arcade Hours</h4>
+              <h4 class="font-headline-md text-headline-md text-primary-container">SOFT LAUNCH HOURS</h4>
               <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide leading-relaxed">
-                MON - THU: 4PM - 12AM<br />
-                FRI: 4PM - 2AM<br />
-                SAT: 12PM - 2AM<br />
-                SUN: 12PM - 10PM
+                MON - THU: 2PM - 8PM<br />
+                FRI: 2PM - 10PM<br />
+                SAT: 12PM - 10PM<br />
+                SUN: 12PM - 8PM
               </p>
             </div>
 
             <div class="space-y-4">
-              <h4 class="font-headline-md text-headline-md text-accent-red neon-text-red">Join the Circuit</h4>
+              <h4 class="font-headline-md text-headline-md text-accent-red neon-text-red">JOIN THE CIRCUIT</h4>
               <div class="flex flex-col gap-2">
                 <input
                   type="email"
@@ -188,11 +188,26 @@ class SiteFooter extends HTMLElement {
             </div>
 
             <div class="space-y-4">
-              <h4 class="font-headline-md text-headline-md text-primary-container">Connect</h4>
+              <h4 class="font-headline-md text-headline-md text-primary-container">CONNECT</h4>
               <div class="flex gap-4">
-                <span class="material-symbols-outlined text-on-surface-variant hover:text-accent-red cursor-pointer transition-colors">share</span>
-                <span class="material-symbols-outlined text-on-surface-variant hover:text-accent-red cursor-pointer transition-colors">forum</span>
-                <span class="material-symbols-outlined text-on-surface-variant hover:text-accent-red cursor-pointer transition-colors">play_circle</span>
+                <a href="https://maps.app.goo.gl/tiQnWqNXYpAXB21f9" target="_blank" rel="noopener" aria-label="Google Maps">
+                  <span
+                    class="social-icon w-6 h-6 bg-on-surface-variant hover:bg-accent-red cursor-pointer transition-colors"
+                    style="-webkit-mask-image:url('${SITE_BASE}assets/icons/google-maps.png');mask-image:url('${SITE_BASE}assets/icons/google-maps.png');"
+                  ></span>
+                </a>
+                <a href="https://www.instagram.com/thegetawaydublin/" target="_blank" rel="noopener" aria-label="Instagram">
+                  <span
+                    class="social-icon w-6 h-6 bg-on-surface-variant hover:bg-accent-red cursor-pointer transition-colors"
+                    style="-webkit-mask-image:url('${SITE_BASE}assets/icons/instagram.png');mask-image:url('${SITE_BASE}assets/icons/instagram.png');"
+                  ></span>
+                </a>
+                <a href="https://www.yelp.com/biz/the-getaway-dublin-2" target="_blank" rel="noopener" aria-label="Yelp">
+                  <span
+                    class="social-icon w-6 h-6 bg-on-surface-variant hover:bg-accent-red cursor-pointer transition-colors"
+                    style="-webkit-mask-image:url('${SITE_BASE}assets/icons/yelp.png');mask-image:url('${SITE_BASE}assets/icons/yelp.png');"
+                  ></span>
+                </a>
               </div>
               <p class="font-body-md text-on-surface-variant">6890 Village Parkway, Dublin, CA 94568</p>
             </div>
