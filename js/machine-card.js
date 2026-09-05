@@ -36,18 +36,7 @@ export function renderMachineCard(machine, { variant = "full", index = 0 } = {})
     ? "border-white/20 hover:border-white/50"
     : "border-primary-container/20 hover:border-primary-container/50";
 
-  const buttonClasses = isWhiteAccent
-    ? "border-primary-container/30 hover:border-primary-container text-primary-container"
-    : "border-accent-red/30 hover:border-accent-red text-white";
-
-  const iconClasses = isWhiteAccent
-    ? "material-symbols-outlined text-[16px]"
-    : "material-symbols-outlined text-[16px] text-accent-red";
-
   const aspectClass = isFeatured ? "aspect-[4/5]" : "aspect-[4/3]";
-  const iconName = isFeatured ? "analytics" : "arrow_forward";
-  const iconExtra = isFeatured ? "" : " group-hover/btn:translate-x-1 transition-transform";
-  const buttonGroup = isFeatured ? "" : "group/btn ";
 
   const description = isFeatured && machine.description
     ? `<p class="font-body-md text-on-surface-variant line-clamp-2">${escapeHtml(machine.description)}</p>`
@@ -59,7 +48,7 @@ export function renderMachineCard(machine, { variant = "full", index = 0 } = {})
 
   return `
     <div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 ${borderClasses}${extraCardClass}" data-manufacturer="${escapeHtml(machine.manufacturerSlug)}">
-      <div class="${aspectClass} w-full relative overflow-hidden">
+      <div class="card-media ${aspectClass} w-full relative overflow-hidden">
         <img
           src="${escapeHtml(machine.image)}"
           alt="${escapeHtml(machine.imageAlt || machine.name)}"
@@ -68,20 +57,14 @@ export function renderMachineCard(machine, { variant = "full", index = 0 } = {})
         <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
         ${badge}
       </div>
-      <div class="p-8 space-y-4">
+      <div class="card-body p-8 space-y-4">
         <h3 class="name font-headline-md text-headline-md text-white uppercase tracking-tight">
           ${escapeHtml(machine.name)}
         </h3>
-        <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
+        <p class="card-meta font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
           ${escapeHtml(machine.manufacturer)} &middot; ${escapeHtml(machine.year)}
         </p>
         ${description}
-        <button
-          class="${buttonGroup}w-full py-3 border ${buttonClasses} transition-all font-label-sm text-label-sm uppercase tracking-widest flex items-center justify-center gap-2"
-        >
-          View Stats
-          <span class="${iconClasses}${iconExtra}">${iconName}</span>
-        </button>
       </div>
     </div>
   `;
@@ -147,6 +130,17 @@ export function initMachineFilters(gridContainerEl) {
   }
 
   searchInput?.addEventListener("input", applyFilters);
+
+  const viewToggleButton = document.getElementById("machine-view-toggle");
+  const viewToggleIcon = viewToggleButton?.querySelector(".material-symbols-outlined");
+
+  viewToggleButton?.addEventListener("click", () => {
+    const isListView = gridContainerEl.classList.toggle("list-view");
+    if (viewToggleIcon) viewToggleIcon.textContent = isListView ? "grid_view" : "view_list";
+    viewToggleButton.classList.toggle("border-accent-red", isListView);
+    viewToggleButton.classList.toggle("text-accent-red", isListView);
+    viewToggleButton.setAttribute("aria-pressed", String(isListView));
+  });
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {

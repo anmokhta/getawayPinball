@@ -66,6 +66,36 @@
   filter: drop-shadow(0 0 12px rgba(227, 27, 35, 0.5));
 }
 
+/* Machine grid -> basic list view (machines page) */
+#machine-grid.list-view .list {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+#machine-grid.list-view .glass-card {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#machine-grid.list-view .glass-card:hover {
+  transform: none;
+}
+
+#machine-grid.list-view .card-media {
+  display: none;
+}
+
+#machine-grid.list-view .card-body {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 8px;
+}
+
 /* Footer "Connect" social icons — solid PNG glyphs recolored via CSS mask
    so they can inherit the same hover/transition treatment as the rest
    of the site's icon set (e.g. the Material Symbols they replaced). */
