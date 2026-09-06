@@ -4,108 +4,108 @@
       "name": "Alvarado Howzit Punch",
       "size": "16 oz",
       "description": "Fruited Sour Ale w/Passionfruit, Orange & Guava",
-      "price": "$10"
+      "price": ""
     },
     {
       "name": "Alvarado Mai Tai Pa",
       "size": "16 oz",
       "description": "Tropical TPA",
-      "price": "$10"
+      "price": ""
     },
     {
       "name": "Alvarado Monterey Beer",
       "size": "12 oz",
       "description": "Lager",
-      "price": "$6"
+      "price": ""
     },
     {
       "name": "Barrel House Sunny Daze Blonde",
       "size": "12 oz",
       "description": "Crisp & Easy Drinking Blonde Ale",
-      "price": "$7"
+      "price": ""
     },
     {
       "name": "Brooklyn Brew - Playa",
       "size": "12 oz",
       "description": "Grapefruit IPA N/A",
-      "price": "$6"
+      "price": ""
     },
     {
       "name": "Calidad - Quality Cerveza",
       "size": "12 oz",
       "description": "Mexican-Style Lager",
-      "price": "$7"
+      "price": ""
     },
     {
       "name": "Fort George - 3 Way",
       "size": "16 oz",
       "description": "IPA 16 oz West Coast India Pale Ale",
-      "price": "$10"
+      "price": ""
     },
     {
       "name": "Great Notion Bubbs - Seltzer",
       "size": "12 oz",
       "description": "Blueberry & Lemon Hard Seltzer",
-      "price": "$8"
+      "price": ""
     },
     {
       "name": "Great Notion Bubbs - Seltzer",
       "size": "12 oz",
       "description": "Pineapple & Mango Hard Seltzer",
-      "price": "$8"
+      "price": ""
     },
     {
       "name": "Paperback Bunny With A Chainsaw",
       "size": "16 oz",
       "description": "Double Hazy IPA",
-      "price": "$11"
+      "price": ""
     }
   ],
   "nonAlcoholic": [
     {
       "name": "7UP",
       "size": "12 oz",
-      "price": "$2"
+      "price": ""
     },
     {
       "name": "Brisk Ice Tea",
       "size": "12 oz",
-      "price": "$2"
+      "price": ""
     },
     {
       "name": "Coke",
       "size": "12 oz",
-      "price": "$2"
+      "price": ""
     },
     {
       "name": "Diet Coke",
       "size": "12 oz",
-      "price": "$2"
+      "price": ""
     },
     {
       "name": "Gatorade",
       "size": "12 oz",
-      "price": "$2"
+      "price": ""
     },
     {
       "name": "Jarritos",
       "size": "17.7 oz",
-      "price": "$3"
+      "price": ""
     },
     {
       "name": "Liquid Death",
       "size": "12 oz",
-      "price": "$3"
+      "price": ""
     },
     {
       "name": "Monster",
       "size": "12 oz",
-      "price": "$3"
+      "price": ""
     },
     {
       "name": "Water",
       "size": "16.9 oz",
-      "price": "$1"
+      "price": ""
     }
   ]
 }
