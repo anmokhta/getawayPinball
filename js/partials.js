@@ -70,11 +70,11 @@ class SiteHeader extends HTMLElement {
             <span class="font-headline-md text-headline-md text-primary-container tracking-tighter uppercase italic sr-only">THE GETAWAY</span>
           </a>
 
-          <nav class="hidden lg:flex items-center gap-gutter">
-            <a href="${SITE_BASE}index.html" data-nav-home data-nav-page="home" class="${NAV_LINK_CLASSES}">Home</a>
+          <nav class="hidden md:flex items-center gap-gutter">
+            <a href="${SITE_BASE}" data-nav-home data-nav-page="home" class="${NAV_LINK_CLASSES}">Home</a>
             <a href="${SITE_BASE}machines/" data-nav-page="machines" class="${NAV_LINK_CLASSES}">Machines</a>
-            <a href="${SITE_BASE}events/" data-nav-page="events" class="${NAV_LINK_CLASSES}">Events</a>
             <a href="${SITE_BASE}menu/" data-nav-page="menu" class="${NAV_LINK_CLASSES}">Menu</a>
+            <a href="${SITE_BASE}events/" data-nav-page="events" class="${NAV_LINK_CLASSES}">Events</a>
             <a href="${SITE_BASE}index.html#location" data-nav-location class="${NAV_LINK_CLASSES}">Location</a>
           </nav>
 
@@ -84,7 +84,7 @@ class SiteHeader extends HTMLElement {
             aria-expanded="false"
             aria-controls="mobile-nav-panel"
             aria-label="Toggle navigation menu"
-            class="lg:hidden flex items-center justify-center w-11 h-11 text-white hover:text-accent-red transition-colors"
+            class="md:hidden flex items-center justify-center w-11 h-11 text-white hover:text-accent-red transition-colors"
           >
             <span class="material-symbols-outlined text-[32px]" data-nav-toggle-icon>menu</span>
           </button>
@@ -93,7 +93,7 @@ class SiteHeader extends HTMLElement {
         <nav
           id="mobile-nav-panel"
           data-nav-panel
-          class="hidden lg:hidden flex-col absolute top-full left-0 right-0 bg-surface/95 backdrop-blur-xl border-t border-white/5 px-margin-mobile py-6 gap-6 max-h-[calc(100vh-5rem)] overflow-y-auto"
+          class="hidden md:hidden flex-col absolute top-full left-0 right-0 bg-surface/95 backdrop-blur-xl border-t border-white/5 px-margin-mobile py-6 gap-6 max-h-[calc(100vh-5rem)] overflow-y-auto"
         >
           <a href="${SITE_BASE}index.html" data-nav-home data-nav-page="home" class="${NAV_LINK_CLASSES}">Home</a>
           <a href="${SITE_BASE}machines/" data-nav-page="machines" class="${NAV_LINK_CLASSES}">Machines</a>
@@ -149,10 +149,11 @@ class SiteHeader extends HTMLElement {
     });
 
     // Collapse the mobile panel automatically if the viewport grows past
-    // the "lg" breakpoint (e.g. rotating a tablet, resizing a window),
-    // since the desktop nav becomes visible again at that point.
+    // the "md" breakpoint (e.g. rotating a tablet, resizing a window),
+    // since the desktop nav becomes visible again at that point — matches
+    // the machines toolbar's own mobile/desktop breakpoint.
     window.addEventListener("resize", () => {
-      if (window.innerWidth >= 1024) closeMenu();
+      if (window.innerWidth >= 768) closeMenu();
     });
   }
 }

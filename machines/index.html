@@ -59,7 +59,7 @@
             <h1
               class="font-display-xl text-[clamp(48px,7.8vw,80px)] font-black text-white uppercase leading-none tracking-tighter mb-6 drop-shadow-lg"
             >
-              Every Table<br />
+              Every Machine<br />
               <span class="text-accent-red neon-text-red">We've Got</span>
             </h1>
             <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
@@ -79,9 +79,9 @@
         <section class="w-full">
           <div class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop pt-16">
             <div
-              class="flex items-center justify-between gap-3 bg-surface-container-high rounded-xl p-4 border border-white/5"
+              class="flex flex-col md:flex-row md:flex-wrap md:items-center md:justify-between gap-3 bg-surface-container-high rounded-xl p-4 border border-white/5"
             >
-              <div class="flex items-center gap-3">
+              <div class="flex items-center gap-3 order-2 md:order-1">
                 <!-- Filter -->
                 <div class="relative" id="machine-filter-dropdown">
                   <button
@@ -161,7 +161,7 @@
                 </div>
               </div>
 
-              <div class="flex items-center gap-3">
+              <div class="flex items-center gap-3 order-1 md:order-2">
                 <!-- Search -->
                 <!--
                   Two nested wrappers on purpose: the outer one owns the tooltip
@@ -169,8 +169,12 @@
                   be cut off) and the inner one owns the expand/collapse
                   animation (MUST clip overflow, to hide the input off to the
                   side while collapsed).
+
+                  On mobile the search field is always shown expanded (see
+                  CSS), so it also grows (flex-1) to fill the row alongside
+                  the View button instead of sitting at its collapsed 44px.
                 -->
-                <div class="relative" id="machine-search-tooltip-wrapper" data-tooltip="Search">
+                <div class="relative flex-1 min-w-0 md:flex-none" id="machine-search-tooltip-wrapper" data-tooltip="Search">
                   <div
                     id="machine-search-wrapper"
                     class="flex items-center h-11 w-11 bg-surface-container-highest border border-outline/40 overflow-hidden transition-all duration-300 focus-within:border-accent-red"

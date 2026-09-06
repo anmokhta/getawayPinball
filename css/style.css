@@ -99,6 +99,17 @@
   margin-top: 0;
 }
 
+/* Below the md breakpoint there isn't enough width for the name and
+   manufacturer/year to share a row, so stack the meta line directly
+   under the name instead of side-by-side. */
+@media (max-width: 767px) {
+  #machine-grid.list-view .card-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+}
+
 #machine-grid.list-view .card-badge-inline {
   display: inline-flex;
 }
@@ -209,9 +220,22 @@
   opacity: 1;
 }
 
-/* Search icon button expands in place into a search field */
+/* Search icon button expands in place into a search field.
+   Capped with 100vw so it can never force the toolbar wider than the
+   viewport on narrow phones (accounts for page + bar padding, plus the
+   View button and gap that sit next to it). */
 #machine-search-wrapper.is-expanded {
-  width: 240px;
+  width: min(240px, calc(100vw - 128px));
+}
+
+/* On mobile the search field is always shown expanded — there's a full
+   row to itself (Search + View stacked above Filter + Sort), so it fills
+   that row's available width regardless of the is-expanded toggle state. */
+@media (max-width: 767px) {
+  #machine-search-wrapper,
+  #machine-search-wrapper.is-expanded {
+    width: 100%;
+  }
 }
 
 /* Themed tooltips for the toolbar icons (Filter / Sort / Search / View) —

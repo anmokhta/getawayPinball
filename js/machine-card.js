@@ -30,13 +30,15 @@ export async function fetchMachines() {
 export function renderMachineCard(machine, { variant = "full", index = 0 } = {}) {
   const isFeatured = variant === "featured";
   const isWhiteAccent = index % 2 === 1;
-  const extraCardClass = isFeatured && index === 1 ? " lg:-mt-12" : "";
+  const extraCardClass = isFeatured && index === 1 ? " md:-mt-12" : "";
 
   const borderClasses = isWhiteAccent
     ? "border-white/20 hover:border-white/50"
     : "border-primary-container/20 hover:border-primary-container/50";
 
-  const aspectClass = isFeatured ? "aspect-[4/5]" : "aspect-[4/3]";
+  // Featured cards are taller (4/5) in the 3-up layout. On small screens they
+  // stack full-width, so match the machines-page table-view crop (4/3) instead.
+  const aspectClass = isFeatured ? "aspect-[4/3] md:aspect-[4/5]" : "aspect-[4/3]";
 
   const description = isFeatured && machine.description
     ? `<p class="font-body-md text-on-surface-variant line-clamp-2">${escapeHtml(machine.description)}</p>`
