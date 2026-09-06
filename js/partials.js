@@ -60,7 +60,7 @@ class SiteHeader extends HTMLElement {
           </span>
         </div>
 
-        <div class="h-20 max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between">
+        <div class="h-20 section-container flex items-center justify-between">
           <a href="${SITE_BASE}index.html" data-nav-home class="flex items-center gap-4">
             <img
               src="${SITE_BASE}assets/full_logo_crop_wordmark.png"
@@ -162,7 +162,7 @@ class SiteFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <footer class="w-full bg-surface-container-lowest py-margin-desktop mt-gutter border-t border-white/5">
-        <div class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop">
+        <div class="section-container">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             <div class="space-y-4">
               <h4 class="font-headline-md text-headline-md text-primary-container">SOFT LAUNCH HOURS</h4>

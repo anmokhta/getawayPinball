@@ -20,43 +20,34 @@
 
     <!-- Tailwind (Play CDN) + local theme config -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="../js/tailwind-config.js?v=2"></script>
+    <script src="../js/tailwind-config.js?v=3"></script>
 
     <!-- Shared header/footer templates (must load before <site-header>/<site-footer> are parsed) -->
-    <script src="../js/partials.js?v=2"></script>
+    <script src="../js/partials.js?v=3"></script>
 
     <!-- Site styles -->
-    <link rel="stylesheet" href="../css/style.css?v=2" />
+    <link rel="stylesheet" href="../css/style.css?v=3" />
   </head>
   <body class="bg-background font-body-md text-on-background">
     <site-header></site-header>
 
     <main class="w-full">
       <section
-        class="relative w-full min-h-screen overflow-hidden flex flex-col items-center justify-center text-center -mt-20 pt-40 pb-32 px-margin-mobile"
+        class="hero-shell min-h-screen items-center justify-center text-center px-margin-mobile"
       >
         <div class="absolute inset-0 z-0">
-          <div
-            class="hero-bg-home w-full h-full bg-cover bg-center scale-105 blur-sm opacity-30"
-          ></div>
-          <div
-            class="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background"
-          ></div>
+          <div class="hero-bg-home hero-bg-layer"></div>
+          <div class="hero-gradient-scrim"></div>
         </div>
 
         <div class="relative z-20">
-          <span
-            class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest neon-text-red mb-4"
-            >— The Circuit</span
-          >
+          <span class="section-eyebrow-label mb-4 inline-block">— The Circuit</span>
           <h1 class="font-display-xl text-[clamp(48px,7.8vw,80px)] font-black text-white uppercase tracking-tighter">
             Coming Soon
           </h1>
         </div>
 
-        <div
-            class="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:block [writing-mode:vertical-rl] font-label-sm text-label-sm text-accent-red/40 tracking-[1em] uppercase"
-        >
+        <div class="decorative-vertical-text">
           League Nights // Soon
         </div>
       </section>
@@ -64,6 +55,6 @@
 
     <site-footer></site-footer>
 
-    <script src="../js/nav.js?v=2"></script>
+    <script src="../js/nav.js?v=3"></script>
   </body>
 </html>

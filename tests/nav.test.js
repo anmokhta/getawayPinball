@@ -29,19 +29,20 @@ describe("shared header/footer template (js/partials.js)", () => {
   });
 
   const pages = [
-    { path: "index.html", depthPrefix: "", activePage: "home" },
-    { path: "machines/", depthPrefix: "../", activePage: "machines" },
-    { path: "events/", depthPrefix: "../", activePage: "events" },
-    { path: "menu/", depthPrefix: "../", activePage: "menu" },
+    { path: "index.html", depthPrefix: "", activePage: "home", homeHref: "" },
+    { path: "machines/", depthPrefix: "../", activePage: "machines", homeHref: "../" },
+    { path: "events/", depthPrefix: "../", activePage: "events", homeHref: "../" },
+    { path: "menu/", depthPrefix: "../", activePage: "menu", homeHref: "../" },
   ];
 
-  for (const { path: pagePath, depthPrefix, activePage } of pages) {
+  for (const { path: pagePath, depthPrefix, activePage, homeHref } of pages) {
     test(`${pagePath}: renders header nav, footer, and promo banner`, async () => {
       const response = await page.goto(`${server.url}/${pagePath}`, { waitUntil: "networkidle0" });
       assert.equal(response.status(), 200);
 
+      // Desktop nav only — mobile panel duplicates the same destinations.
       const navLinks = await page.evaluate(() =>
-        Array.from(document.querySelectorAll("site-header nav a")).map((a) => ({
+        Array.from(document.querySelectorAll("site-header nav:not([data-nav-panel]) a")).map((a) => ({
           text: a.textContent.trim(),
           href: a.getAttribute("href"),
           page: a.getAttribute("data-nav-page"),
@@ -50,13 +51,13 @@ describe("shared header/footer template (js/partials.js)", () => {
       assert.deepEqual(
         navLinks.map((l) => ({ text: l.text, href: l.href })),
         [
-          { text: "Home", href: `${depthPrefix}index.html` },
+          { text: "Home", href: homeHref },
           { text: "Machines", href: `${depthPrefix}machines/` },
-          { text: "Events", href: `${depthPrefix}events/` },
           { text: "Menu", href: `${depthPrefix}menu/` },
+          { text: "Events", href: `${depthPrefix}events/` },
           { text: "Location", href: `${depthPrefix}index.html#location` },
         ],
-        `nav hrefs should be prefixed with "${depthPrefix}" on ${pagePath}`
+        `desktop nav hrefs should be prefixed with "${depthPrefix}" on ${pagePath}`
       );
 
       const bannerText = await page.evaluate(() => document.querySelector("#promo-banner")?.textContent.trim());
@@ -80,17 +81,19 @@ describe("shared header/footer template (js/partials.js)", () => {
           page: a.getAttribute("data-nav-page"),
           isRed: a.classList.contains("text-accent-red"),
           ariaCurrent: a.getAttribute("aria-current"),
+          inMobile: Boolean(a.closest("[data-nav-panel]")),
         }))
       );
 
+      // Desktop + mobile both mark the current page active.
       const activeLinks = state.filter((s) => s.isRed);
-      assert.equal(activeLinks.length, 1, "exactly one nav link should be highlighted red");
-      assert.equal(activeLinks[0].page, activePage);
-      assert.equal(activeLinks[0].ariaCurrent, "page");
+      assert.equal(activeLinks.length, 2, "desktop and mobile nav should each highlight the active page");
+      assert.ok(activeLinks.every((s) => s.page === activePage && s.ariaCurrent === "page"));
 
       // Location is a section of Home, not its own page, and should never be highlighted.
-      const locationLink = state.find((s) => s.page === null);
-      assert.equal(locationLink.isRed, false);
+      const locationLinks = state.filter((s) => s.page === null);
+      assert.ok(locationLinks.length >= 1);
+      assert.ok(locationLinks.every((s) => s.isRed === false));
     });
   }
 });

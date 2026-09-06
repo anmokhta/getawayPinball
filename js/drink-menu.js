@@ -2,6 +2,8 @@
    Drinks menu — fetch (live sheet + local fallback), parse, render
    ========================================================================== */
 
+import { escapeHtml } from "./utils.js";
+
 const SHEET_ID = "13sG85RrWNKItkQ7nmJqvWqSL9B7YgKsEmzrRoftITZk";
 const ALCOHOLIC_GID = "0";
 const NON_ALCOHOLIC_GID = "1770095770";
@@ -11,15 +13,6 @@ const FALLBACK_URL = new URL("../data/drinks.json", import.meta.url);
 
 function sheetCsvUrl(gid) {
   return `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${gid}`;
-}
-
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
 }
 
 /**

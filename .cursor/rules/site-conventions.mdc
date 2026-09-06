@@ -1,0 +1,15 @@
+---
+description: Getaway Pinball site structure — shared vs page-specific CSS/JS
+globs: "**/*.{html,css,js}"
+alwaysApply: false
+---
+
+# Site conventions
+
+- Shared chrome (nav/footer) → `js/partials.js` custom elements.
+- Shared visual patterns (hero shell, section container, eyebrows) → named classes in `css/style.css` (plain CSS; Tailwind CDN cannot `@apply` external stylesheets).
+- Shared logic → modules like `js/utils.js`, `js/machine-card.js`.
+- Page-only JS → `js/pages/`; page-only CSS → `css/pages/`, linked only from that page.
+- Do not merge conceptually different UI into one class just because styles coincide today.
+- Interactive state: one source of truth (prefer CSS classes toggled by JS).
+- After changing shared CSS/JS referenced via `<link>`/`<script>`, bump the `?v=` cache-bust query on every page that loads them.

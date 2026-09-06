@@ -30,7 +30,7 @@ describe("file:// browsing (opening index.html directly, no local server)", () =
   });
 
   const navPages = [
-    { navPage: "machines", folder: "machines", heading: "Every Table" },
+    { navPage: "machines", folder: "machines", heading: "Every Machine" },
     { navPage: "events", folder: "events", heading: "Coming Soon" },
     { navPage: "menu", folder: "menu", heading: "Fuel Your" },
   ];
@@ -80,9 +80,11 @@ describe("file:// browsing (opening index.html directly, no local server)", () =
   test("Home nav link still works normally (untouched by the directory-link rewrite)", async () => {
     await page.goto(fileUrl("machines", "index.html"), { waitUntil: "networkidle0" });
 
+    // Use the logo (href ends in index.html) — the desktop Home text link is a
+    // directory-style "../" href, which is intentionally different.
     await Promise.all([
       page.waitForNavigation({ waitUntil: "networkidle0" }),
-      page.click("site-header nav a[data-nav-home]"),
+      page.click('site-header a[data-nav-home] img[alt="The Getaway Logo"]'),
     ]);
     assert.equal(page.url(), fileUrl("index.html"));
   });

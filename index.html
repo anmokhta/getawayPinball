@@ -20,13 +20,13 @@
 
     <!-- Tailwind (Play CDN) + local theme config -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="js/tailwind-config.js?v=2"></script>
+    <script src="js/tailwind-config.js?v=3"></script>
 
     <!-- Shared header/footer templates (must load before <site-header>/<site-footer> are parsed) -->
-    <script src="js/partials.js?v=2"></script>
+    <script src="js/partials.js?v=3"></script>
 
     <!-- Site styles -->
-    <link rel="stylesheet" href="css/style.css?v=2" />
+    <link rel="stylesheet" href="css/style.css?v=3" />
   </head>
   <body class="bg-background font-body-md text-on-background">
     <site-header></site-header>
@@ -34,31 +34,20 @@
     <main class="w-full">
       <div class="flex flex-col w-full">
         <!-- Hero Section -->
-        <section
-          class="relative w-full overflow-hidden flex flex-col items-center justify-center -mt-20 pt-40 pb-32"
-        >
+        <section class="hero-shell items-center justify-center">
           <div class="absolute inset-0 z-0">
-            <div
-              class="hero-bg-home w-full h-full bg-cover bg-center scale-105 blur-sm opacity-30"
-            ></div>
-            <div
-              class="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background"
-            ></div>
+            <div class="hero-bg-home hero-bg-layer"></div>
+            <div class="hero-gradient-scrim"></div>
           </div>
 
           <!-- Kinetic Grid Overlay with Red hints -->
           <div class="hero-dot-overlay absolute inset-0 z-10 opacity-10"></div>
 
-          <div
-            class="relative z-20 max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop text-center"
-          >
+          <div class="relative z-20 section-container text-center">
             <div
               class="inline-block mb-6 px-4 py-1 border border-accent-red/30 rounded-full bg-surface-container-low/50 backdrop-blur-md"
             >
-              <span
-                class="font-label-sm text-label-sm text-accent-red uppercase tracking-[0.3em] neon-text-red"
-                >The High Score Starts Here</span
-              >
+              <span class="hero-eyebrow-label">The High Score Starts Here</span>
             </div>
 
             <h1
@@ -99,32 +88,25 @@
           </div>
 
           <!-- Decorative Vertical Text -->
-          <div
-            class="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:block [writing-mode:vertical-rl] font-label-sm text-label-sm text-accent-red/40 tracking-[1em] uppercase"
-          >
+          <div class="decorative-vertical-text">
             Insert Coin // Play Again
           </div>
         </section>
 
         <!-- Featured Machines Section -->
         <section class="w-full py-24 bg-surface-container-lowest">
-          <div class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop">
+          <div class="section-container">
             <div
               class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8"
             >
               <div class="space-y-4">
-                <span
-                  class="font-label-sm text-label-sm text-accent-red uppercase tracking-widest neon-text-red"
-                  >— The Arsenal</span
-                >
+                <span class="section-eyebrow-label">— The Arsenal</span>
                 <h2 class="font-headline-lg text-headline-lg text-white uppercase">
                   Elite Playfields
                 </h2>
               </div>
               <div class="flex gap-4">
-                <div
-                  class="h-[2px] w-32 bg-accent-red self-center opacity-30"
-                ></div>
+                <div class="section-accent-rule"></div>
                 <p class="font-body-md text-on-surface-variant max-w-xs">
                   Curated collection of Stern, Williams, and Bally classics kept
                   in tournament-ready condition.
@@ -143,7 +125,7 @@
         <section class="w-full py-24 relative overflow-hidden">
           <div
             id="location"
-            class="max-w-[1440px] mx-auto px-margin-mobile lg:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-12 items-center"
+            class="section-container grid grid-cols-1 md:grid-cols-12 gap-12 items-center"
           >
             <div
               class="md:col-span-7 h-[500px] rounded-2xl overflow-hidden glass-card p-2 border-accent-red/20"
@@ -219,7 +201,7 @@
 
     <site-footer></site-footer>
 
-    <script src="js/nav.js?v=2"></script>
-    <script src="js/pages/home.js?v=2" type="module"></script>
+    <script src="js/nav.js?v=3"></script>
+    <script src="js/pages/home.js?v=3" type="module"></script>
   </body>
 </html>

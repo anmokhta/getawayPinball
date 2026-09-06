@@ -2,6 +2,8 @@
    Shared machine-card helpers — fetch, render, hover glow, search
    ========================================================================== */
 
+import { escapeHtml } from "./utils.js";
+
 const MACHINES_URL = new URL("../data/machines.json", import.meta.url);
 
 const BADGE_CLASSES = {
@@ -9,15 +11,6 @@ const BADGE_CLASSES = {
   LEGEND: "bg-accent-red text-white",
   CLASSIC: "bg-surface-container-high text-on-surface border border-outline/50",
 };
-
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
-}
 
 export async function fetchMachines() {
   const response = await fetch(MACHINES_URL);

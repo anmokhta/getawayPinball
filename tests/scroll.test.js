@@ -57,13 +57,17 @@ describe("cross-page nav click behavior (js/nav.js)", () => {
       assert.ok(scrollY < 5, `expected scrollY near 0, got ${scrollY}`);
     });
 
-    test("from Machines: navigates to index.html instead of doing nothing", async () => {
+    test("from Machines: navigates to Home instead of doing nothing", async () => {
       await page.goto(`${server.url}/machines/`, { waitUntil: "networkidle0" });
       await Promise.all([
         page.waitForNavigation({ waitUntil: "networkidle0" }),
-        page.click("site-header nav a[data-nav-home]"),
+        page.click("site-header nav:not([data-nav-panel]) a[data-nav-home]"),
       ]);
-      assert.equal(page.url(), `${server.url}/index.html`);
+      // Desktop Home uses a directory-style href ("" / "../"), so the server
+      // lands on the site root rather than a literal ".../index.html" URL.
+      assert.match(page.url(), /\/(index\.html)?$/);
+      const heading = await page.evaluate(() => document.querySelector("main h1")?.textContent || "");
+      assert.match(heading, /Getaway/);
     });
 
     test("from Events: clicking the logo navigates to index.html", async () => {
