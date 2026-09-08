@@ -44,8 +44,8 @@ function sendJson(res, status, body) {
  *     paths inside the page (e.g. "../css/style.css") resolve correctly.
  *   - Dotenv files (.env, .env.*) are never served.
  *
- * Optional `onRequest` can short-circuit specific paths (used by the local
- * /__dev/sync-machines test route). Return true if the request was handled.
+ * Optional `onRequest` can short-circuit specific paths. Return true if the
+ * request was handled.
  */
 function createStaticServer(rootDir, { onRequest } = {}) {
   return http.createServer(async (req, res) => {

@@ -5,9 +5,8 @@
   Syncs data/machines.json from Pinball Map (location 30142 — The Getaway)
   and resolves translite images from OPDB's public HTML.
 
-  Run manually with `npm run sync-machines`, via the scheduled GitHub Action
-  in .github/workflows/sync-machines.yml, or from the local-only Load button
-  on /machines/ while `npm run dev` is running (reads .env).
+  Run manually with `npm run sync-machines`, or automatically via the
+  scheduled GitHub Action in .github/workflows/sync-machines.yml.
 
   Token: PINBALLMAP_API_TOKEN env var, or .env in the repo root (gitignored).
   Never hardcode the token. Never call this API from the browser.
@@ -24,6 +23,16 @@ const ENV_PATH = path.join(ROOT, ".env");
 const USER_AGENT =
   "GetawayPinball-sync-machines/1.0 (+https://github.com; local arcade site sync)";
 const OPDB_DELAY_MS = 350;
+/** Typical OPDB translite/backglass landscape ratio (width/height). */
+const TARGET_TRANSLITE_RATIO = 1.55;
+
+function log(...args) {
+  console.log("[sync-machines]", ...args);
+}
+
+function logWarn(...args) {
+  console.warn("[sync-machines]", ...args);
+}
 
 const MANUFACTURER_SLUGS = {
   stern: "stern",
@@ -190,6 +199,58 @@ async function fetchImageCaption(detailUrl) {
   return (header?.[1] || "").trim();
 }
 
+/**
+ * Read width/height from a JPEG (or PNG) by fetching the image bytes.
+ * Returns { width, height, ratio } or null.
+ */
+async function fetchImageDimensions(imageUrl) {
+  await sleep(OPDB_DELAY_MS);
+  const response = await fetch(imageUrl, {
+    headers: { "User-Agent": USER_AGENT, Accept: "image/*" },
+  });
+  if (!response.ok) return null;
+  const buf = Buffer.from(await response.arrayBuffer());
+
+  // PNG: IHDR at byte 16
+  if (buf.length >= 24 && buf[0] === 0x89 && buf[1] === 0x50) {
+    const width = buf.readUInt32BE(16);
+    const height = buf.readUInt32BE(20);
+    if (width > 0 && height > 0) {
+      return { width, height, ratio: width / height };
+    }
+  }
+
+  // JPEG: scan for SOF0–SOF3
+  for (let i = 0; i < buf.length - 9; i++) {
+    if (buf[i] !== 0xff) continue;
+    const marker = buf[i + 1];
+    if (marker >= 0xc0 && marker <= 0xc3) {
+      const height = buf.readUInt16BE(i + 5);
+      const width = buf.readUInt16BE(i + 7);
+      if (width > 0 && height > 0) {
+        return { width, height, ratio: width / height };
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * Among candidates, pick the one whose aspect ratio is closest to a typical
+ * landscape translite. Returns null if dimensions can't be read for any.
+ */
+async function pickClosestTransliteRatio(candidates) {
+  let best = null;
+  for (const candidate of candidates) {
+    const dims = await fetchImageDimensions(candidate.imageUrl);
+    if (!dims) continue;
+    const distance = Math.abs(dims.ratio - TARGET_TRANSLITE_RATIO);
+    const scored = { ...candidate, ...dims, distance };
+    if (!best || scored.distance < best.distance) best = scored;
+  }
+  return best;
+}
+
 async function resolveOpdbImage(opdbId, machineName) {
   if (!opdbId) {
     return { image: null, reason: "no opdb_id", candidates: [] };
@@ -268,11 +329,30 @@ async function resolveOpdbImage(opdbId, machineName) {
         opdbImagesUrl: imagesUrl,
       };
     }
+    if (hits.length > 1) pool = hits;
+  }
+
+  // Last resort: pick the candidate closest to a typical translite aspect ratio.
+  log(
+    `  … ${pool.length} candidates still tied; picking closest to ratio ${TARGET_TRANSLITE_RATIO}`
+  );
+  const byRatio = await pickClosestTransliteRatio(pool);
+  if (byRatio) {
+    log(
+      `  … chose ${byRatio.width}×${byRatio.height} (ratio ${byRatio.ratio.toFixed(3)})`
+    );
+    return {
+      image: byRatio.imageUrl,
+      reason: null,
+      candidates: labeled,
+      opdbImagesUrl: imagesUrl,
+      pickedByRatio: true,
+    };
   }
 
   return {
     image: null,
-    reason: `multiple Backglass/translite images (${pool.length}); captions do not uniquely identify one`,
+    reason: `multiple Backglass/translite images (${pool.length}); captions and ratios do not uniquely identify one`,
     candidates: labeled,
     opdbImagesUrl: imagesUrl,
   };
@@ -346,12 +426,16 @@ function buildReviewMarkdown(unresolved) {
  * Run the full sync. Returns { machines, written, unresolvedCount }.
  */
 async function syncMachines() {
+  log("Starting sync for Pinball Map location", LOCATION_ID);
   const token = getApiToken();
+  log("API token loaded");
 
+  log("Fetching machine_details.json and location.json…");
   const [details, location] = await Promise.all([
     fetchJson(pinballMapUrl(`/locations/${LOCATION_ID}/machine_details.json`, token)),
     fetchJson(pinballMapUrl(`/locations/${LOCATION_ID}.json`, token)),
   ]);
+  log("Pinball Map responses received");
 
   const rawMachines = details.machines || details.location?.machines || [];
   if (!Array.isArray(rawMachines) || rawMachines.length === 0) {
@@ -373,13 +457,19 @@ async function syncMachines() {
   }
 
   const active = rawMachines.filter((m) => m.is_active !== false);
+  log(
+    `Roster: ${rawMachines.length} listed, ${active.length} active, ${lmxList.length} LMX date records`
+  );
+
   const existing = loadExistingMachines();
   const { byOpdb, byId, byKey } = existingLookup(existing);
+  log(`Existing snapshot: ${existing.length} machine(s) for description merge`);
 
   const machines = [];
   const unresolved = [];
 
-  for (const raw of active) {
+  for (let i = 0; i < active.length; i++) {
+    const raw = active[i];
     const name = raw.name;
     const manufacturer = raw.manufacturer || "";
     const year = raw.year;
@@ -407,11 +497,20 @@ async function syncMachines() {
         ].join("|")
       );
 
+    log(`[${i + 1}/${active.length}] ${name} — resolving OPDB image…`);
     const imageAlt = `${name} pinball machine translite`;
     const resolved = await resolveOpdbImage(opdbId, name);
-    const image = resolved.image || null;
+    // Prefer a fresh OPDB pick; if OPDB can't decide, keep a manual/prior image
+    // so re-running sync does not wipe conflict resolutions in machines.json.
+    let image = resolved.image || null;
 
-    if (!image) {
+    if (image) {
+      log(`  ✓ image ok (opdb)`);
+    } else if (prev?.image) {
+      image = prev.image;
+      log(`  ✓ kept existing image (manual/prior)`);
+    } else {
+      logWarn(`  ✗ no image (${resolved.reason || "unknown"})`);
       unresolved.push({
         name,
         manufacturer,
@@ -450,14 +549,22 @@ async function syncMachines() {
   const written = previous !== next;
   if (written) {
     fs.writeFileSync(OUTPUT_PATH, next);
+    log(`Wrote ${OUTPUT_PATH} (${machines.length} machines)`);
+  } else {
+    log(`${OUTPUT_PATH} unchanged (${machines.length} machines)`);
   }
 
   if (unresolved.length > 0) {
     fs.writeFileSync(REVIEW_PATH, buildReviewMarkdown(unresolved));
+    logWarn(
+      `${unresolved.length} machine(s) need image review → ${path.relative(ROOT, REVIEW_PATH)}`
+    );
   } else if (fs.existsSync(REVIEW_PATH)) {
     fs.unlinkSync(REVIEW_PATH);
+    log("Removed stale machines-images-needs-review.md (all images resolved)");
   }
 
+  log("Sync finished");
   return {
     machines,
     count: machines.length,
@@ -469,12 +576,8 @@ async function syncMachines() {
 
 async function main() {
   const result = await syncMachines();
-  const status = result.written
-    ? `Wrote data/machines.json (${result.count} machines)`
-    : `data/machines.json is already up to date (${result.count} machines)`;
-  console.log(status);
   if (result.unresolvedCount > 0) {
-    console.log(
+    log(
       `${result.unresolvedCount} machine(s) need image review — see data/machines-images-needs-review.md`
     );
   }

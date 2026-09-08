@@ -183,17 +183,6 @@
                   </div>
                 </div>
 
-                <!-- TODO(remove): local test sync button — also remove /__dev/sync-machines in scripts/dev-server.js -->
-                <button
-                  type="button"
-                  id="machine-sync-test-toggle"
-                  aria-label="Sync from Pinball Map (local)"
-                  data-tooltip="Sync from Pinball Map (local)"
-                  class="toolbar-btn toolbar-icon-btn"
-                >
-                  <span class="material-symbols-outlined text-[20px]">refresh</span>
-                </button>
-
                 <!-- View -->
                 <button
                   type="button"
@@ -222,17 +211,6 @@
             <div id="machine-grid">
               <div class="list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"></div>
             </div>
-            <p class="mt-10 font-body-md text-on-surface-variant text-center text-sm">
-              Machine list from
-              <a
-                href="https://pinballmap.com/map/?by_location_id=30142"
-                class="text-accent-red hover:underline"
-                rel="noopener noreferrer"
-                target="_blank"
-                >Pinball Map</a
-              >
-              — update this location listing there.
-            </p>
           </div>
         </section>
       </div>
@@ -242,6 +220,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"></script>
     <script src="../js/nav.js?v=3"></script>
-    <script src="../js/pages/machines.js?v=3" type="module"></script>
+    <script src="../js/pages/machines.js?v=4" type="module"></script>
   </body>
 </html>

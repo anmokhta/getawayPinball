@@ -3,35 +3,64 @@ name: Sync machines.json from Pinball Map
 overview: Add a deterministic, no-AI sync script (mirroring scripts/sync-drinks.js) that pulls The Getaway's real machine lineup from the Pinball Map API and enriches each entry with a translite image scraped from OPDB's public HTML, running on a daily GitHub Action.
 todos:
   - id: get-token
-    content: User requests and obtains Pinball Map API token, stores as PINBALLMAP_API_TOKEN GitHub secret
-    status: pending
+    content: User stores PINBALLMAP_API_TOKEN as a GitHub Actions secret and in a gitignored local .env
+    status: completed
+  - id: env-files
+    content: Add gitignored .env, committed .env.example, and block .env from the local static server
+    status: completed
   - id: sync-script
     content: Write scripts/sync-machines.js (fetch Pinball Map roster, resolve images via OPDB HTML, merge descriptions, write machines.json + review file)
-    status: pending
+    status: completed
   - id: workflow
     content: Add .github/workflows/sync-machines.yml (daily cron + workflow_dispatch, commit-if-changed)
-    status: pending
+    status: completed
   - id: package-script
     content: Add npm run sync-machines to package.json
-    status: pending
+    status: completed
   - id: sources-doc
     content: Write data/machines-SOURCES.md documenting the ongoing methodology
-    status: pending
+    status: completed
   - id: attribution
     content: Add Pinball Map attribution link to machines/index.html
-    status: pending
+    status: completed
+  - id: test-load-button
+    content: Temporary Load button that POSTs to local-only /__dev/sync-machines (reads .env, runs same script); marked for deletion with the extra route
+    status: completed
   - id: first-run
     content: Run the script once token exists, review data/machines-images-needs-review.md, manually resolve any flagged images
-    status: pending
+    status: completed
 isProject: false
 ---
-
 
 # Sync `data/machines.json` from Pinball Map
 
 ## Prerequisite (blocking — do this first)
 
-Pinball Map now requires a manually-approved `api_token` on every API call (enforced since July 30, 2026). **No script will be written to actually run against the live API until you have this token.** See the step-by-step instructions above this plan for how to request it, and store it as a GitHub Actions secret named `PINBALLMAP_API_TOKEN`. Everything below is designed so implementation can start immediately once that secret exists — I will not commit anything that hardcodes or requires the token to be present in this repo.
+Pinball Map now requires a manually-approved `api_token` on every API call (enforced since July 30, 2026). Never commit the token, never put it in `data/`, HTML, or JS, and never paste it into chat.
+
+### Where to put the token
+
+**GitHub Actions (needed for the daily sync):**
+
+1. Open the repo on GitHub → **Settings** → **Secrets and variables** → **Actions**
+2. **New repository secret**
+3. Name (exact): `PINBALLMAP_API_TOKEN`
+4. Value: the token Pinball Map gave you
+5. Save
+
+The workflow will inject it as `process.env.PINBALLMAP_API_TOKEN` when it runs `node scripts/sync-machines.js`.
+
+**Local `.env` (needed only to run `npm run sync-machines` on your machine):**
+
+- Committed: [`.env.example`](.env.example) with `PINBALLMAP_API_TOKEN=` (empty placeholder, no secret).
+- Local only: copy to `.env` and paste the real token. Add `.env` to [`.gitignore`](.gitignore) so git never tracks it.
+- `scripts/sync-machines.js` reads `.env` itself (tiny KEY=VALUE parser, no extra npm package). A real `process.env.PINBALLMAP_API_TOKEN` still wins if both are set.
+
+`npm run dev` and opening the HTML as static files **do not use this token.** The machines page already loads [`data/machines.json`](data/machines.json) in the browser. Previewing the site just serves that snapshot. Sync first (Node, with the token), then refresh the local site to see the new JSON.
+
+**Do not let the local server serve `.env`.** [`scripts/dev-server.js`](scripts/dev-server.js) serves the repo root, so `http://127.0.0.1:8080/.env` would leak the token in the browser if we ignored this. [`scripts/static-server.js`](scripts/static-server.js) will 404 any path whose basename is `.env` or starts with `.env.` (covers `.env.local` etc.). GitHub Pages would also serve a committed `.env` as a public file — gitignore is the other half of that.
+
+Do **not** put the token in `.github/workflows/sync-machines.yml` as a literal string. Reference `secrets.PINBALLMAP_API_TOKEN` only.
 
 ## Architecture (mirrors the existing drinks pipeline)
 
@@ -47,7 +76,9 @@ flowchart LR
     out2 --> commit
 ```
 
-Unlike `js/drink-menu.js`, the browser will **not** call Pinball Map/OPDB directly — both APIs forbid exposing tokens client-side, and the OPDB scrape is multi-request/slow. `js/machine-card.js` keeps doing exactly what it does today: `fetch("../data/machines.json")`. No changes needed there or in `js/pages/machines.js` — both already treat `badge`/`description` as optional.
+Unlike `js/drink-menu.js`, the **shipped site** never calls Pinball Map or OPDB — not on page load, not from a timer. GitHub Pages is static; there is no server to hide the token. Visitors only read the committed snapshot via `fetch("../data/machines.json")`.
+
+**Local testing is different:** `npm run dev` can run the same Node sync behind a localhost-only route, reading `.env`. That path exists only while you are testing and is deleted with the button.
 
 ## Pinball Map endpoint (one location's machines)
 
@@ -102,7 +133,39 @@ Per Pinball Map's request-volume rules: two scheduled fetches of this single loc
 
 ## `.github/workflows/sync-machines.yml` (new)
 
-Same shape as `.github/workflows/sync-drinks.yml`: `schedule` (daily cron) + `workflow_dispatch`, `PINBALLMAP_API_TOKEN` passed from `secrets.PINBALLMAP_API_TOKEN` as an env var to the script, then commit-if-changed on both `data/machines.json` and `data/machines-images-needs-review.md`.
+Same shape as `.github/workflows/sync-drinks.yml`. After you finish local testing, this is the **only** remaining way the Pinball Map API runs.
+
+- `schedule`: once per 24 hours (`cron: "0 8 * * *"` UTC, ~1am Pacific — adjust if you want a different hour).
+- `workflow_dispatch`: **Run workflow** in the GitHub Actions tab.
+- `PINBALLMAP_API_TOKEN` from `secrets.PINBALLMAP_API_TOKEN`.
+- Commit-if-changed on `data/machines.json` and `data/machines-images-needs-review.md`. GitHub Pages then serves the new snapshot.
+
+The live site does not call the API on page load, on navigation, or on a timer.
+
+## Local testing: `.env` + Load button (delete both when done)
+
+The browser cannot read `.env`. The test button only works with `npm run dev` running, because the **dev server** (not the page) holds the key and runs the script.
+
+**Setup**
+
+1. Copy `.env.example` → `.env` (gitignored).
+2. Put `PINBALLMAP_API_TOKEN=...` in `.env`.
+3. `npm run dev`, open `/machines/`.
+
+**Load button** — icon next to search in [`machines/index.html`](machines/index.html) (`refresh`, tooltip like "Sync from Pinball Map (local)"). Mark HTML + JS with `TODO(remove): local test sync button`.
+
+On click it `POST`s to `http://127.0.0.1:<port>/__dev/sync-machines` (same origin as the preview). [`scripts/dev-server.js`](scripts/dev-server.js) / [`scripts/static-server.js`](scripts/static-server.js) handle that path **only on localhost**: load `.env` if needed, run the same `scripts/sync-machines.js` (or its exported `main`), write `data/machines.json`, return JSON `{ ok, count }` or an error. The page then re-fetches `machines.json` and re-renders.
+
+If that route is hit on anything other than localhost, or `.env` / the env var is missing, return 404/500 and **do not** call Pinball Map. GitHub Pages has no such route, so a leftover button there would fail safely.
+
+**When you are satisfied (you do this, or ask me):**
+
+- Delete `.env`
+- Remove the Load button and its click handler
+- Remove the `/__dev/sync-machines` route
+- Leave the GitHub Action + `npm run sync-machines` (Action still needs the script; you just won't use the button or `.env`)
+
+Keep `.env.example` (empty placeholder) and the `.gitignore` entry so a future local run is still possible from the terminal without the button.
 
 ## `package.json`
 

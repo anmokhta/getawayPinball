@@ -20,21 +20,22 @@ Translite / backglass URLs are resolved from [opdb.org](https://opdb.org) withou
 1. Search `https://opdb.org/search?q={opdb_id}` (redirects to the machine page).
 2. Open that machine’s `/images` page and parse the `<h5>Backglass/translite (N)</h5>` section.
 3. If `N === 1`, use that image (`-small.jpg` → `-large.jpg` on `img.opdb.org`).
-4. If `N > 1`, fetch each candidate’s caption; if exactly one caption matches an edition keyword from the machine name (Pro, Premium, LE, etc.), use it; otherwise leave `image` unset.
-
-Unresolved machines are listed in `data/machines-images-needs-review.md` (generated when needed) with candidate URLs for a human to finish.
+4. If `N > 1`, fetch each candidate’s caption; prefer a unique edition-keyword match, then a unique Translite/Backglass label.
+5. If still tied, download each candidate’s dimensions and pick the one whose aspect ratio is closest to **1.55** (typical landscape translite; measured from known-good OPDB backglasses).
+6. If OPDB still can’t produce an image, keep any existing `image` already in `machines.json` (manual override).
+7. Only if there is still no image is the machine listed in `data/machines-images-needs-review.md`.
 
 IPDB and Pinside are not used for automated image fetch (bot protection). Kineticist is out of scope for now (extra API key).
 
 ## Descriptions
 
-`description` is editorial. The sync **carries forward** an existing description when the machine still matches by `opdbId` (fallback: name + manufacturer + year). New machines get no description until written by hand. `badge` is not synced.
+`description` is editorial. The sync **carries forward** an existing description when the machine still matches by `opdbId` (fallback: slug `id`, then name + manufacturer + year). New machines get no description until written by hand. `badge` is not synced.
 
-## Local testing
+**Manual image overrides:** edit `image` on a machine in `machines.json` (e.g. after picking from the review file). The next sync keeps that URL whenever OPDB still can’t choose uniquely.
 
-1. Copy `.env.example` → `.env` and set `PINBALLMAP_API_TOKEN` (gitignored; never committed).
-2. `npm run sync-machines`, or use the temporary Load button on `/machines/` while `npm run dev` is running (POST `/__dev/sync-machines` — localhost only).
-3. When satisfied, delete `.env`, remove the Load button and the `/__dev/sync-machines` route, and rely on the GitHub Action.
+## Updating the list
+
+The live site never calls Pinball Map. A daily GitHub Action (plus manual **Run workflow** under Actions → Sync machines list) writes `data/machines.json`. Optionally run `npm run sync-machines` locally with `PINBALLMAP_API_TOKEN` set (env var or a gitignored `.env` from `.env.example`).
 
 ## Attribution
 
