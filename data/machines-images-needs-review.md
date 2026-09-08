@@ -10,7 +10,7 @@ and either add it via a future override file or fix the OPDB captions.
 - Year: 2016
 - OPDB ID: `GRoz4-MjBV6`
 - Images page: https://opdb.org/machines/2021/images
-- Reason: multiple Backglass/translite images match edition keywords (2)
+- Reason: multiple Backglass/translite images (2); captions do not uniquely identify one
 
 Candidates:
 
@@ -25,7 +25,7 @@ Candidates:
 - Year: 2023
 - OPDB ID: `GpeoL-MkPz1-A9Qlw`
 - Images page: https://opdb.org/machines/2246/images
-- Reason: multiple Backglass/translite images match edition keywords (2)
+- Reason: multiple Backglass/translite images (2); captions do not uniquely identify one
 
 Candidates:
 
@@ -40,7 +40,7 @@ Candidates:
 - Year: 2024
 - OPDB ID: `GweeP-Ml9pZ-AOvNL`
 - Images page: https://opdb.org/machines/2210/images
-- Reason: multiple Backglass/translite images (3); captions do not uniquely match edition keywords [70th anniversary]
+- Reason: multiple Backglass/translite images (3); captions do not uniquely identify one
 
 Candidates:
 
@@ -51,28 +51,13 @@ Candidates:
 - https://img.opdb.org/6395743f-d5ad-4a44-9c28-71eca21c5656-large.jpg — Godzilla (Premium/LE): Image
   - detail: https://opdb.org/machines/2210/images/7384
 
-## Guardians of the Galaxy (Pro)
-
-- Manufacturer: Stern
-- Year: 2017
-- OPDB ID: `GRWvz-Mp4yl`
-- Images page: https://opdb.org/machines/2101/images
-- Reason: multiple Backglass/translite images (2); captions do not uniquely match edition keywords [pro]
-
-Candidates:
-
-- https://img.opdb.org/444f71ee-62ff-4fdd-8f6f-801ec8bb0d30-large.jpg — Guardians of the Galaxy: Translite
-  - detail: https://opdb.org/machines/2101/images/7276
-- https://img.opdb.org/2e487e41-3cc3-4895-bb85-bcff6aef1f61-large.jpg — Guardians of the Galaxy: Backglass
-  - detail: https://opdb.org/machines/2101/images/4584
-
 ## King Kong: Myth of Terror Island (Premium)
 
 - Manufacturer: Stern
 - Year: 2025
 - OPDB ID: `GEL0V-MyN8E-A1Dkr`
 - Images page: https://opdb.org/machines/2407/images
-- Reason: multiple Backglass/translite images match edition keywords (2)
+- Reason: multiple Backglass/translite images (2); captions do not uniquely identify one
 
 Candidates:
 
@@ -87,7 +72,7 @@ Candidates:
 - Year: 2026
 - OPDB ID: `GV8wB-MRjKd-AOVy7`
 - Images page: https://opdb.org/machines/2462/images
-- Reason: multiple Backglass/translite images match edition keywords (2)
+- Reason: multiple Backglass/translite images (2); captions do not uniquely identify one
 
 Candidates:
 
@@ -95,36 +80,4 @@ Candidates:
   - detail: https://opdb.org/machines/2462/images/12696
 - https://img.opdb.org/6760f322-aac9-4d6e-85e0-8998e29aa53f-large.jpg — Pokémon (Premium/LE): Image
   - detail: https://opdb.org/machines/2462/images/12692
-
-## Star Wars (Pro)
-
-- Manufacturer: Stern
-- Year: 2017
-- OPDB ID: `G5vLR-MwNwy`
-- Images page: https://opdb.org/machines/2090/images
-- Reason: multiple Backglass/translite images match edition keywords (3)
-
-Candidates:
-
-- https://img.opdb.org/2e567d55-22b9-462e-88c1-6996553fdd29-large.jpg — Star Wars (Pro): Image
-  - detail: https://opdb.org/machines/2090/images/7948
-- https://img.opdb.org/3162b368-9cca-439d-8ac3-23ffd57a823a-large.jpg — Star Wars (Pro): Translite
-  - detail: https://opdb.org/machines/2090/images/7260
-- https://img.opdb.org/6525e8fb-e42b-4b1d-9878-3796202dd121-large.jpg — Star Wars (Pro): Backglass
-  - detail: https://opdb.org/machines/2090/images/3184
-
-## World Cup Soccer
-
-- Manufacturer: Bally
-- Year: 1994
-- OPDB ID: `G42E2-MQP9e`
-- Images page: https://opdb.org/machines/903/images
-- Reason: multiple Backglass/translite images (2); captions do not uniquely match edition keywords [none]
-
-Candidates:
-
-- https://img.opdb.org/b4f8da44-a716-4047-ad32-3b5c63323893-large.jpg — World Cup Soccer: Backglass
-  - detail: https://opdb.org/machines/903/images/180
-- https://img.opdb.org/f1e52018-e371-49bb-bf19-22de9cc21228-large.jpg — World Cup Soccer: Image
-  - detail: https://opdb.org/machines/903/images/13608
 
