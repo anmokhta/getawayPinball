@@ -231,7 +231,7 @@ describe("Home page", () => {
     assert.match(bodyText, /Elite Playfields/);
   });
 
-  test("renders three featured machine cards from the start of machines.json", async () => {
+  test("renders three random featured machine cards from machines.json", async () => {
     await page.goto(`${server.url}/index.html`, { waitUntil: "networkidle0" });
     await page.waitForSelector("#featured-machines-grid .glass-card");
 
@@ -241,9 +241,16 @@ describe("Home page", () => {
       )
     );
     assert.equal(names.length, 3);
-    assert.equal(names[0], "Aerosmith (Pro)");
-    assert.equal(names[1], "Avengers: Infinity Quest (Pro)");
-    assert.equal(names[2], "Batman 66 (Premium)");
+    assert.equal(new Set(names).size, 3);
+
+    const catalog = await page.evaluate(async () => {
+      const response = await fetch(new URL("data/machines.json", window.location.href));
+      return response.json();
+    });
+    const catalogNames = new Set(catalog.map((machine) => machine.name));
+    for (const name of names) {
+      assert.ok(catalogNames.has(name), `featured machine missing from catalog: ${name}`);
+    }
   });
 
   test("shows location address and phone inside #location", async () => {
