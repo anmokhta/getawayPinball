@@ -67,8 +67,9 @@ describe("Machines page", () => {
     const bodyText = await page.evaluate(() => document.querySelector("main")?.textContent || "");
     assert.match(bodyText, /The Addams Family/);
     assert.match(bodyText, /Godzilla \(Pro\)/);
-    assert.match(bodyText, /Stern Pinball/);
+    assert.match(bodyText, /Stern/);
     assert.match(bodyText, /Williams/);
+    assert.match(bodyText, /Pinball Map/);
   });
 
   test("shows a visible error when machines.json fails to load", async () => {
@@ -240,9 +241,9 @@ describe("Home page", () => {
       )
     );
     assert.equal(names.length, 3);
-    assert.equal(names[0], "The Addams Family");
-    assert.equal(names[1], "Aerosmith (Pro)");
-    assert.equal(names[2], "Avengers: Infinity Quest (Pro)");
+    assert.equal(names[0], "Aerosmith (Pro)");
+    assert.equal(names[1], "Avengers: Infinity Quest (Pro)");
+    assert.equal(names[2], "Batman 66 (Premium)");
   });
 
   test("shows location address and phone inside #location", async () => {
