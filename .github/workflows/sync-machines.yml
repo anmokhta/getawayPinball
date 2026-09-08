@@ -1,0 +1,46 @@
+name: Sync machines list
+
+on:
+  schedule:
+    # Once per day at 08:00 UTC (~1am Pacific)
+    - cron: "0 8 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Sync machines.json from Pinball Map
+        env:
+          PINBALLMAP_API_TOKEN: ${{ secrets.PINBALLMAP_API_TOKEN }}
+        run: node scripts/sync-machines.js
+
+      - name: Commit and push if changed
+        run: |
+          git add data/machines.json
+          if [ -f data/machines-images-needs-review.md ]; then
+            git add data/machines-images-needs-review.md
+          else
+            git rm --ignore-unmatch data/machines-images-needs-review.md || true
+          fi
+
+          if git diff --cached --quiet; then
+            echo "No changes to machines data"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: sync machines list from Pinball Map"
+          git push

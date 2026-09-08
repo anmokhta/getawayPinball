@@ -12,8 +12,11 @@ const BADGE_CLASSES = {
   CLASSIC: "bg-surface-container-high text-on-surface border border-outline/50",
 };
 
-export async function fetchMachines() {
-  const response = await fetch(MACHINES_URL);
+export async function fetchMachines({ cacheBust = false } = {}) {
+  const requestUrl = cacheBust
+    ? `${MACHINES_URL.href}${MACHINES_URL.href.includes("?") ? "&" : "?"}t=${Date.now()}`
+    : MACHINES_URL;
+  const response = await fetch(requestUrl);
   if (!response.ok) {
     throw new Error(`Failed to load machines.json (${response.status})`);
   }
@@ -45,14 +48,20 @@ export function renderMachineCard(machine, { variant = "full", index = 0 } = {})
     ? `<span class="card-badge-inline hidden ${BADGE_CLASSES[machine.badge] || BADGE_CLASSES.NEW} px-2 py-0.5 rounded-full font-label-bold text-[9px] tracking-widest">${escapeHtml(machine.badge)}</span>`
     : "";
 
-  return `
-    <div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 ${borderClasses}${extraCardClass}" data-manufacturer="${escapeHtml(machine.manufacturerSlug)}" data-year="${escapeHtml(machine.year)}">
-      <div class="card-media ${aspectClass} w-full relative overflow-hidden">
-        <img
+  const media = machine.image
+    ? `<img
           src="${escapeHtml(machine.image)}"
           alt="${escapeHtml(machine.imageAlt || machine.name)}"
           class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
+        />`
+    : `<div class="w-full h-full bg-surface-container-highest flex items-center justify-center" role="img" aria-label="${escapeHtml(machine.imageAlt || machine.name)}">
+          <span class="material-symbols-outlined text-4xl text-on-surface-variant">image</span>
+        </div>`;
+
+  return `
+    <div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 ${borderClasses}${extraCardClass}" data-manufacturer="${escapeHtml(machine.manufacturerSlug)}" data-year="${escapeHtml(machine.year)}">
+      <div class="card-media ${aspectClass} w-full relative overflow-hidden">
+        ${media}
         <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
         ${badge}
       </div>

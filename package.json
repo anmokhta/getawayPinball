@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node scripts/dev-server.js",
     "test": "node --test",
-    "sync-drinks": "node scripts/sync-drinks.js"
+    "sync-drinks": "node scripts/sync-drinks.js",
+    "sync-machines": "node scripts/sync-machines.js"
   },
   "devDependencies": {
     "puppeteer-core": "^23.11.1"
