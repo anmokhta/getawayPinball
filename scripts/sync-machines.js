@@ -229,7 +229,8 @@ async function resolveOpdbImage(opdbId, machineName) {
     };
   }
 
-  // Multiple candidates: try caption edition keyword match
+  // Multiple candidates: try caption edition keyword match, then prefer
+  // explicitly labeled Translite / Backglass over generic "Image".
   const keywords = editionKeywords(machineName);
   const labeled = [];
   for (const candidate of candidates) {
@@ -237,26 +238,41 @@ async function resolveOpdbImage(opdbId, machineName) {
     labeled.push({ ...candidate, caption });
   }
 
-  const matching = labeled.filter((c) => {
-    const cap = c.caption.toLowerCase();
-    return keywords.some((kw) => cap.includes(kw));
-  });
+  let pool = labeled;
+  if (keywords.length > 0) {
+    const matching = labeled.filter((c) => {
+      const cap = c.caption.toLowerCase();
+      return keywords.some((kw) => cap.includes(kw));
+    });
+    if (matching.length === 1) {
+      return {
+        image: matching[0].imageUrl,
+        reason: null,
+        candidates: labeled,
+        opdbImagesUrl: imagesUrl,
+      };
+    }
+    if (matching.length > 1) pool = matching;
+  }
 
-  if (matching.length === 1) {
-    return {
-      image: matching[0].imageUrl,
-      reason: null,
-      candidates: labeled,
-      opdbImagesUrl: imagesUrl,
-    };
+  const pickByCaptionWord = (word) =>
+    pool.filter((c) => new RegExp(`\\b${word}\\b`, "i").test(c.caption));
+
+  for (const word of ["translite", "backglass"]) {
+    const hits = pickByCaptionWord(word);
+    if (hits.length === 1) {
+      return {
+        image: hits[0].imageUrl,
+        reason: null,
+        candidates: labeled,
+        opdbImagesUrl: imagesUrl,
+      };
+    }
   }
 
   return {
     image: null,
-    reason:
-      matching.length === 0
-        ? `multiple Backglass/translite images (${candidates.length}); captions do not uniquely match edition keywords [${keywords.join(", ") || "none"}]`
-        : `multiple Backglass/translite images match edition keywords (${matching.length})`,
+    reason: `multiple Backglass/translite images (${pool.length}); captions do not uniquely identify one`,
     candidates: labeled,
     opdbImagesUrl: imagesUrl,
   };
@@ -273,9 +289,11 @@ function loadExistingMachines() {
 
 function existingLookup(existing) {
   const byOpdb = new Map();
+  const byId = new Map();
   const byKey = new Map();
   for (const machine of existing) {
     if (machine.opdbId) byOpdb.set(machine.opdbId, machine);
+    if (machine.id) byId.set(machine.id, machine);
     const key = [
       String(machine.name || "")
         .trim()
@@ -287,7 +305,7 @@ function existingLookup(existing) {
     ].join("|");
     byKey.set(key, machine);
   }
-  return { byOpdb, byKey };
+  return { byOpdb, byId, byKey };
 }
 
 function buildReviewMarkdown(unresolved) {
@@ -356,7 +374,7 @@ async function syncMachines() {
 
   const active = rawMachines.filter((m) => m.is_active !== false);
   const existing = loadExistingMachines();
-  const { byOpdb, byKey } = existingLookup(existing);
+  const { byOpdb, byId, byKey } = existingLookup(existing);
 
   const machines = [];
   const unresolved = [];
@@ -372,9 +390,11 @@ async function syncMachines() {
 
     const lmx = lmxByMachineId.get(raw.id);
     const pinballMapDateAdded = isoDateFromTimestamp(lmx?.created_at);
+    const id = slugify(name);
 
     const prev =
       (opdbId && byOpdb.get(opdbId)) ||
+      byId.get(id) ||
       byKey.get(
         [
           String(name || "")
@@ -404,7 +424,7 @@ async function syncMachines() {
     }
 
     const entry = {
-      id: slugify(name),
+      id,
       name,
       manufacturer,
       manufacturerSlug: manufacturerSlug(manufacturer),
