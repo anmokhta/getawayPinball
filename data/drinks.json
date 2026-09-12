@@ -3,29 +3,35 @@
     {
       "name": "Alvarado Howzit Punch",
       "size": "16 oz",
-      "description": "Fruited Sour Ale w/Passionfruit, Orange & Guava",
+      "description": "Fruited Sour Ale w/ Passionfruit, Orange & Guava",
       "price": ""
     },
     {
-      "name": "Alvarado Mai Tai Pa",
+      "name": "Alvarado Mai Tai PA",
       "size": "16 oz",
-      "description": "Tropical TPA",
+      "description": "Tropical IPA",
       "price": ""
     },
     {
-      "name": "Alvarado Monterey Beer",
+      "name": "Alvarado Monterey",
       "size": "12 oz",
       "description": "Lager",
       "price": ""
     },
     {
-      "name": "Barrel House Sunny Daze Blonde",
+      "name": "Barrel House - Sunny Daze",
       "size": "12 oz",
-      "description": "Crisp & Easy Drinking Blonde Ale",
+      "description": "American Ale with Citrus",
       "price": ""
     },
     {
-      "name": "Brooklyn Brew - Playa",
+      "name": "Breakside - Pilsner",
+      "size": "16 oz",
+      "description": "Pilsner",
+      "price": ""
+    },
+    {
+      "name": "Brooklyn Brew - Playa (Non-Alch)",
       "size": "12 oz",
       "description": "Grapefruit IPA N/A",
       "price": ""
@@ -37,25 +43,49 @@
       "price": ""
     },
     {
-      "name": "Fort George - 3 Way",
+      "name": "Crow & Wolf - Lady Marmalade",
       "size": "16 oz",
-      "description": "IPA 16 oz West Coast India Pale Ale",
+      "description": "Hard Seltzer w/ Pink Dragonfruit, Lemon & Yuzu",
       "price": ""
     },
     {
-      "name": "Great Notion Bubbs - Seltzer",
+      "name": "Crow & Wolf - Pass the Tabu",
+      "size": "16 oz",
+      "description": "Hard Seltzer w/ Guava, Pineapple, Mango & More",
+      "price": ""
+    },
+    {
+      "name": "Epidemic Ales - Zombrew",
+      "size": "16 oz",
+      "description": "India Pale Ale",
+      "price": ""
+    },
+    {
+      "name": "Fort George - City of Dreams",
       "size": "12 oz",
-      "description": "Blueberry & Lemon Hard Seltzer",
+      "description": "Hazy Pale Ale",
       "price": ""
     },
     {
-      "name": "Great Notion Bubbs - Seltzer",
+      "name": "Great Notion - BUBBS",
       "size": "12 oz",
-      "description": "Pineapple & Mango Hard Seltzer",
+      "description": "Hard Seltzer w/ Blueberry & Sicilian Lemon",
       "price": ""
     },
     {
-      "name": "Paperback Bunny With A Chainsaw",
+      "name": "Great Notion - Jammy Pants",
+      "size": "16 oz",
+      "description": "Tart Ale w/ Blueberry, Blackberrry & Boysenberry",
+      "price": ""
+    },
+    {
+      "name": "Great Notion - Ripe",
+      "size": "16 oz",
+      "description": "Hazy IPA",
+      "price": ""
+    },
+    {
+      "name": "Paperback - Bunny with a Chainsaw",
       "size": "16 oz",
       "description": "Double Hazy IPA",
       "price": ""
