@@ -259,6 +259,18 @@
     "pinballMapDateAdded": "2026-08-18"
   },
   {
+    "id": "the-simpsons-pinball-party",
+    "name": "The Simpsons Pinball Party",
+    "manufacturer": "Stern",
+    "manufacturerSlug": "stern",
+    "year": 2003,
+    "imageAlt": "The Simpsons Pinball Party pinball machine translite",
+    "image": "https://img.opdb.org/f5ac8c7b-e353-4c5e-93ee-64dadbe0db01-large.jpg",
+    "opdbId": "GRvBL-MP3Ev",
+    "ipdbLink": "https://www.ipdb.org/machine.cgi?id=4674",
+    "pinballMapDateAdded": "2026-09-16"
+  },
+  {
     "id": "venom-pro",
     "name": "Venom (Pro)",
     "manufacturer": "Stern",
