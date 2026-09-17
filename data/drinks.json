@@ -26,7 +26,7 @@
     },
     {
       "name": "Breakside - Pilsner",
-      "size": "16 oz",
+      "size": "16 oz//12 oz",
       "description": "Pilsner",
       "price": ""
     },
@@ -87,7 +87,19 @@
     {
       "name": "Paperback - Bunny with a Chainsaw",
       "size": "16 oz",
-      "description": "Double Hazy IPA",
+      "description": "Double Dry Hopped Hazy IPA",
+      "price": ""
+    },
+    {
+      "name": "Paperback - Baby Bunny with a Chainsaw",
+      "size": "16 oz",
+      "description": "Double Dry Hopped Hazy IPA",
+      "price": ""
+    },
+    {
+      "name": "Paperback - No Way Back!",
+      "size": "16 oz",
+      "description": "Triple Dry Hopped IPA",
       "price": ""
     }
   ],
