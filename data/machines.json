@@ -71,17 +71,6 @@
     "pinballMapDateAdded": "2026-08-18"
   },
   {
-    "id": "godzilla-70th-anniversary",
-    "name": "Godzilla (70th Anniversary)",
-    "manufacturer": "Stern",
-    "manufacturerSlug": "stern",
-    "year": 2024,
-    "imageAlt": "Godzilla (70th Anniversary) pinball machine translite",
-    "image": "https://img.opdb.org/3cf2e195-ae8d-4183-aa03-d181d361034f-large.jpg",
-    "opdbId": "GweeP-Ml9pZ-AOvNL",
-    "pinballMapDateAdded": "2026-08-24"
-  },
-  {
     "id": "godzilla-pro",
     "name": "Godzilla (Pro)",
     "manufacturer": "Stern",
@@ -162,6 +151,17 @@
     "image": "https://img.opdb.org/359b002f-0eac-4999-b582-67238bbeb9e5-large.jpg",
     "opdbId": "GEL0V-MyN8E-A1Dkr",
     "pinballMapDateAdded": "2026-08-18"
+  },
+  {
+    "id": "metallica-remastered-premium",
+    "name": "Metallica Remastered (Premium)",
+    "manufacturer": "Stern",
+    "manufacturerSlug": "stern",
+    "year": 2024,
+    "imageAlt": "Metallica Remastered (Premium) pinball machine translite",
+    "image": "https://img.opdb.org/c938188f-e622-45a3-b558-0d6b03e6e6e8-large.jpg",
+    "opdbId": "GO0q3-MOEy8-ARol7",
+    "pinballMapDateAdded": "2026-09-23"
   },
   {
     "id": "pokemon-premium",
