@@ -1,17 +1,5 @@
 [
   {
-    "id": "aerosmith-pro",
-    "name": "Aerosmith (Pro)",
-    "manufacturer": "Stern",
-    "manufacturerSlug": "stern",
-    "year": 2017,
-    "imageAlt": "Aerosmith (Pro) pinball machine translite",
-    "image": "https://img.opdb.org/7b75fd25-db4a-4ac4-be7f-b12bd234a27d-large.jpg",
-    "opdbId": "Gr16e-MnKEX",
-    "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6370",
-    "pinballMapDateAdded": "2026-08-18"
-  },
-  {
     "id": "avengers-infinity-quest-pro",
     "name": "Avengers: Infinity Quest (Pro)",
     "manufacturer": "Stern",
@@ -58,6 +46,17 @@
     "opdbId": "G6lnq-MRj7Z",
     "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6559",
     "pinballMapDateAdded": "2026-08-18"
+  },
+  {
+    "id": "dungeons-and-dragons-the-tyrants-eye-pro",
+    "name": "Dungeons & Dragons: The Tyrant's Eye (Pro)",
+    "manufacturer": "Stern",
+    "manufacturerSlug": "stern",
+    "year": 2025,
+    "imageAlt": "Dungeons & Dragons: The Tyrant's Eye (Pro) pinball machine translite",
+    "image": "https://img.opdb.org/593fd16d-2e6a-4f82-b81e-1fb2f95e565e-large.jpg",
+    "opdbId": "GK1Ej-MwNZr",
+    "pinballMapDateAdded": "2026-09-26"
   },
   {
     "id": "foo-fighters-premium",
