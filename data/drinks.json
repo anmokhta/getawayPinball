@@ -51,7 +51,13 @@
     {
       "name": "Crow & Wolf - Pass the Tabu",
       "size": "16 oz",
-      "description": "Hard Seltzer w/ Guava, Pineapple, Mango & More",
+      "description": "Tropical Seltzer w/ Guava, Pineapple, Mango & More",
+      "price": ""
+    },
+    {
+      "name": "Crow & Wolf - Dark Wolf",
+      "size": "16 oz",
+      "description": "Sorbet-style Seltzer feat. Boysenberry & Vanilla",
       "price": ""
     },
     {
