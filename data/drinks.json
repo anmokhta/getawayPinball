@@ -85,6 +85,12 @@
       "price": ""
     },
     {
+      "name": "Great Notion - BUBBS",
+      "size": "16 oz",
+      "description": "Fruit Punch Hard Seltzer",
+      "price": ""
+    },
+    {
       "name": "Great Notion - Jammy Pants",
       "size": "16 oz",
       "description": "Tart Ale w/ Blueberry, Blackberrry & Boysenberry",
@@ -112,6 +118,12 @@
       "name": "Paperback - No Way Back!",
       "size": "16 oz",
       "description": "Triple Dry Hopped IPA",
+      "price": ""
+    },
+    {
+      "name": "Paperback - Satan Wears Pajamas",
+      "size": "16 oz",
+      "description": "American Red Ale",
       "price": ""
     }
   ],
