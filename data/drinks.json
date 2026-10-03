@@ -27,7 +27,7 @@
     {
       "name": "Breakside - Pilsner",
       "size": "12 oz",
-      "description": "Pilsner",
+      "description": "Liquid Sunshine Pilsner",
       "price": ""
     },
     {
@@ -39,25 +39,25 @@
     {
       "name": "Calidad - Quality Cerveza",
       "size": "12 oz",
-      "description": "Mexican-Style Lager",
-      "price": ""
-    },
-    {
-      "name": "Crow & Wolf - Lady Marmalade",
-      "size": "16 oz",
-      "description": "Hard Seltzer w/ Pink Dragonfruit, Lemon & Yuzu",
-      "price": ""
-    },
-    {
-      "name": "Crow & Wolf - Pass the Tabu",
-      "size": "16 oz",
-      "description": "Tropical Seltzer w/ Guava, Pineapple, Mango & More",
+      "description": "Light Mexican-Style Lager",
       "price": ""
     },
     {
       "name": "Crow & Wolf - Dark Wolf",
       "size": "16 oz",
       "description": "Sorbet-style Seltzer feat. Boysenberry & Vanilla",
+      "price": ""
+    },
+    {
+      "name": "Crow & Wolf - Lady Marmalade",
+      "size": "16 oz",
+      "description": "Pink Lemonade Sorbet Seltzer made with Dragon Fruit, Yuzu and Lemon",
+      "price": ""
+    },
+    {
+      "name": "Crow & Wolf - Pass the Tabu",
+      "size": "16 oz",
+      "description": "Tropical Seltzer with a blend of Guava, Pinapple, Mango & more",
       "price": ""
     },
     {
@@ -73,9 +73,15 @@
       "price": ""
     },
     {
+      "name": "Epidemic Ales - Pineapple Upside Down Cake",
+      "size": "16 oz",
+      "description": "Hazy Pale Ale",
+      "price": ""
+    },
+    {
       "name": "Epidemic Ales - Zombrew",
       "size": "16 oz",
-      "description": "India Pale Ale",
+      "description": "West Coast India Pale Ale",
       "price": ""
     },
     {
@@ -87,19 +93,25 @@
     {
       "name": "Great Notion - BUBBS",
       "size": "12 oz",
-      "description": "Hard Seltzer w/ Blueberry & Sicilian Lemon",
+      "description": "Hard Seltzer w/Blueberry & Sicilian Lemon",
       "price": ""
     },
     {
       "name": "Great Notion - BUBBS",
       "size": "16 oz",
-      "description": "Fruit Punch Hard Seltzer",
+      "description": "Hard Seltzer - Fruit Punch",
+      "price": ""
+    },
+    {
+      "name": "Great Notion - Cape Beer",
+      "size": "16 oz",
+      "description": "Tart Ale w/Pineapple, Tangerine, Passionfruit & Guava",
       "price": ""
     },
     {
       "name": "Great Notion - Jammy Pants",
       "size": "16 oz",
-      "description": "Tart Ale w/ Blueberry, Blackberrry & Boysenberry",
+      "description": "Tart Ale w/Blueberry, Blackberrry & Boysenberry",
       "price": ""
     },
     {
