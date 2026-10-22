@@ -9,9 +9,9 @@ Static HTML site (GitHub Pages). No build step. Tailwind via Play CDN + [`js/tai
 | Chrome identical on every page (nav, footer) | Custom elements in [`js/partials.js`](js/partials.js) (`<site-header>`, `<site-footer>`) |
 | Visual pattern reused across pages (hero shell, section container, eyebrows) | Named class in [`css/style.css`](css/style.css) |
 | Logic reused across modules (`escapeHtml`, status messages) | Shared module such as [`js/utils.js`](js/utils.js) |
-| Page-specific JS orchestration | [`js/pages/`](js/pages/) (e.g. `home.js`, `machines.js`, `menu.js`) |
+| Page-specific JS orchestration | [`js/pages/`](js/pages/) (e.g. `machines.js`, `menu.js`) |
 | Page-specific CSS | [`css/pages/`](css/pages/) (e.g. `machines.css`), linked only from that page |
-| Domain components used by multiple pages | Shared modules (e.g. [`js/machine-card.js`](js/machine-card.js) for home + machines) |
+| Domain components used by multiple pages | Shared modules (e.g. [`js/machine-card.js`](js/machine-card.js)) |
 
 ## Matching intent, not forcing sameness
 

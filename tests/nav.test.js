@@ -66,6 +66,21 @@ describe("shared header/footer template (js/partials.js)", () => {
       const footerText = await page.evaluate(() => document.querySelector("site-footer footer")?.textContent || "");
       assert.match(footerText, /6890 Village Parkway/);
 
+      const kitForm = await page.evaluate(() => {
+        const form = document.querySelector("site-footer form");
+        const email = form?.querySelector('input[type="email"]');
+        return {
+          action: form?.getAttribute("action") || "",
+          method: (form?.getAttribute("method") || "").toLowerCase(),
+          emailName: email?.getAttribute("name") || "",
+          emailRequired: Boolean(email?.required),
+        };
+      });
+      assert.equal(kitForm.action, "https://app.kit.com/forms/10084653/subscriptions");
+      assert.equal(kitForm.method, "post");
+      assert.equal(kitForm.emailName, "email_address");
+      assert.equal(kitForm.emailRequired, true);
+
       const logoLoaded = await page.evaluate(() => {
         const img = document.querySelector("site-header img");
         return Boolean(img && img.complete && img.naturalWidth > 0);
@@ -96,4 +111,13 @@ describe("shared header/footer template (js/partials.js)", () => {
       assert.ok(locationLinks.every((s) => s.isRed === false));
     });
   }
+
+  test("thank-you/: returns 200 and confirmation copy", async () => {
+    const response = await page.goto(`${server.url}/thank-you/`, { waitUntil: "networkidle0" });
+    assert.equal(response.status(), 200);
+
+    const copy = await page.evaluate(() => document.querySelector("main")?.textContent || "");
+    assert.match(copy, /You’re in|You're in/);
+    assert.match(copy, /Check your email to confirm/i);
+  });
 });

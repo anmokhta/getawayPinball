@@ -9,7 +9,7 @@ async function renderMachineGrid() {
   try {
     const machines = await fetchMachines();
     listEl.innerHTML = machines
-      .map((machine, index) => renderMachineCard(machine, { variant: "full", index }))
+      .map((machine, index) => renderMachineCard(machine, { index }))
       .join("");
 
     initMachineFilters(grid);

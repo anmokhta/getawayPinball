@@ -23,22 +23,12 @@ export async function fetchMachines({ cacheBust = false } = {}) {
   return response.json();
 }
 
-export function renderMachineCard(machine, { variant = "full", index = 0 } = {}) {
-  const isFeatured = variant === "featured";
+export function renderMachineCard(machine, { index = 0 } = {}) {
   const isWhiteAccent = index % 2 === 1;
-  const extraCardClass = isFeatured && index === 1 ? " md:-mt-12" : "";
 
   const borderClasses = isWhiteAccent
     ? "border-white/20 hover:border-white/50"
     : "border-primary-container/20 hover:border-primary-container/50";
-
-  // Featured cards are taller (4/5) in the 3-up layout. On small screens they
-  // stack full-width, so match the machines-page table-view crop (4/3) instead.
-  const aspectClass = isFeatured ? "aspect-[4/3] md:aspect-[4/5]" : "aspect-[4/3]";
-
-  const description = isFeatured && machine.description
-    ? `<p class="font-body-md text-on-surface-variant line-clamp-2">${escapeHtml(machine.description)}</p>`
-    : "";
 
   const badge = machine.badge
     ? `<div class="absolute top-4 right-4 ${BADGE_CLASSES[machine.badge] || BADGE_CLASSES.NEW} px-3 py-1 font-label-bold text-[10px] tracking-widest">${escapeHtml(machine.badge)}</div>`
@@ -59,8 +49,8 @@ export function renderMachineCard(machine, { variant = "full", index = 0 } = {})
         </div>`;
 
   return `
-    <div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 ${borderClasses}${extraCardClass}" data-manufacturer="${escapeHtml(machine.manufacturerSlug)}" data-year="${escapeHtml(machine.year)}">
-      <div class="card-media ${aspectClass} w-full relative overflow-hidden">
+    <div class="glass-card group relative overflow-hidden rounded-xl transition-all hover:-translate-y-2 ${borderClasses}" data-manufacturer="${escapeHtml(machine.manufacturerSlug)}" data-year="${escapeHtml(machine.year)}">
+      <div class="card-media aspect-[4/3] w-full relative overflow-hidden">
         ${media}
         <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
         ${badge}
@@ -75,7 +65,6 @@ export function renderMachineCard(machine, { variant = "full", index = 0 } = {})
         <p class="card-meta font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest transition-colors">
           ${escapeHtml(machine.manufacturer)} &middot; ${escapeHtml(machine.year)}
         </p>
-        ${description}
       </div>
     </div>
   `;

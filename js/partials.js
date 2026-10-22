@@ -176,16 +176,26 @@ class SiteFooter extends HTMLElement {
 
             <div class="space-y-4">
               <h4 class="font-headline-md text-headline-md text-accent-red neon-text-red">JOIN THE CIRCUIT</h4>
-              <div class="flex flex-col gap-2">
+              <form
+                action="https://app.kit.com/forms/10084653/subscriptions"
+                method="post"
+                class="flex flex-col gap-2"
+              >
                 <input
                   type="email"
+                  name="email_address"
+                  required
+                  aria-label="Email Address"
                   placeholder="Enter email for news..."
                   class="bg-surface-container-high border-b border-outline p-2 font-body-md text-on-surface focus:border-accent-red focus:outline-none transition-all placeholder:text-outline-variant"
                 />
-                <button class="bg-primary-container text-white font-label-bold text-label-bold py-3 px-4 uppercase tracking-tighter neon-glow-primary transition-all">
+                <button
+                  type="submit"
+                  class="bg-primary-container text-white font-label-bold text-label-bold py-3 px-4 uppercase tracking-tighter neon-glow-primary transition-all"
+                >
                   Subscribe
                 </button>
-              </div>
+              </form>
             </div>
 
             <div class="space-y-4">

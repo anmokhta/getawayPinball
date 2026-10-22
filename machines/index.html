@@ -23,7 +23,7 @@
     <script src="../js/tailwind-config.js?v=3"></script>
 
     <!-- Shared header/footer templates (must load before <site-header>/<site-footer> are parsed) -->
-    <script src="../js/partials.js?v=3"></script>
+    <script src="../js/partials.js?v=4"></script>
 
     <!-- Site styles -->
     <link rel="stylesheet" href="../css/style.css?v=3" />
@@ -211,6 +211,16 @@
             <div id="machine-grid">
               <div class="list grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter"></div>
             </div>
+            <p class="mt-12 text-center font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
+              Machine roster from
+              <a
+                href="https://pinballmap.com/map/?by_location_id=30142"
+                class="text-primary-container hover:text-white transition-colors underline underline-offset-4"
+                rel="noopener noreferrer"
+                target="_blank"
+                >Pinball Map</a
+              >
+            </p>
           </div>
         </section>
       </div>
@@ -220,6 +230,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/list.js@2.3.1/dist/list.min.js"></script>
     <script src="../js/nav.js?v=3"></script>
-    <script src="../js/pages/machines.js?v=4" type="module"></script>
+    <script src="../js/pages/machines.js?v=5" type="module"></script>
   </body>
 </html>

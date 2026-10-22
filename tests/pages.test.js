@@ -218,7 +218,7 @@ describe("Home page", () => {
     await page.close();
   });
 
-  test("shows the hero copy, decorative side text, and featured section headings", async () => {
+  test("shows the hero copy and decorative side text", async () => {
     await page.goto(`${server.url}/index.html`, { waitUntil: "networkidle0" });
 
     const bodyText = await page.evaluate(() => document.querySelector("main")?.textContent || "");
@@ -227,30 +227,11 @@ describe("Home page", () => {
     assert.match(bodyText, /Getaway/);
     assert.match(bodyText, /Everyone deserves a place to escape/);
     assert.match(bodyText, /Insert Coin \/\/ Play Again/);
-    assert.match(bodyText, /— The Arsenal/);
-    assert.match(bodyText, /Elite Playfields/);
-  });
-
-  test("renders three random featured machine cards from machines.json", async () => {
-    await page.goto(`${server.url}/index.html`, { waitUntil: "networkidle0" });
-    await page.waitForSelector("#featured-machines-grid .glass-card");
-
-    const names = await page.evaluate(() =>
-      Array.from(document.querySelectorAll("#featured-machines-grid .name")).map((el) =>
-        el.textContent.trim()
-      )
+    assert.doesNotMatch(bodyText, /Elite Playfields/);
+    const featuredGone = await page.evaluate(
+      () => document.getElementById("featured-machines-grid") === null
     );
-    assert.equal(names.length, 3);
-    assert.equal(new Set(names).size, 3);
-
-    const catalog = await page.evaluate(async () => {
-      const response = await fetch(new URL("data/machines.json", window.location.href));
-      return response.json();
-    });
-    const catalogNames = new Set(catalog.map((machine) => machine.name));
-    for (const name of names) {
-      assert.ok(catalogNames.has(name), `featured machine missing from catalog: ${name}`);
-    }
+    assert.equal(featuredGone, true);
   });
 
   test("shows location address and phone inside #location", async () => {
@@ -259,22 +240,6 @@ describe("Home page", () => {
     const locationText = await page.evaluate(() => document.getElementById("location")?.textContent || "");
     assert.match(locationText, /6890 Village Parkway/);
     assert.match(locationText, /555-GETAWAY/);
-  });
-
-  test("shows a visible error when machines.json fails to load", async () => {
-    await abortMachinesJson(page);
-    await page.goto(`${server.url}/index.html`, { waitUntil: "networkidle0" });
-    await sleep(300);
-
-    const cardCount = await page.evaluate(
-      () => document.querySelectorAll("#featured-machines-grid .glass-card").length
-    );
-    assert.equal(cardCount, 0);
-
-    const gridText = await page.evaluate(
-      () => document.getElementById("featured-machines-grid")?.textContent || ""
-    );
-    assert.match(gridText, /Couldn't load machines/);
   });
 
   test('"View Events" links to events/ and navigates there on click', async () => {
