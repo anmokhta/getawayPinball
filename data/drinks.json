@@ -3,29 +3,35 @@
     {
       "name": "Alvarado Howzit Punch",
       "size": "16 oz",
-      "description": "Fruited Sour Ale w/Passionfruit, Orange & Guava",
+      "description": "Fruited Sour Ale w/ Passionfruit, Orange & Guava",
       "price": ""
     },
     {
-      "name": "Alvarado Mai Tai Pa",
+      "name": "Alvarado Mai Tai PA",
       "size": "16 oz",
-      "description": "Tropical TPA",
+      "description": "Tropical IPA",
       "price": ""
     },
     {
-      "name": "Alvarado Monterey Beer",
+      "name": "Alvarado Monterey",
       "size": "12 oz",
       "description": "Lager",
       "price": ""
     },
     {
-      "name": "Barrel House Sunny Daze Blonde",
+      "name": "Barrel House - Sunny Daze",
       "size": "12 oz",
-      "description": "Crisp & Easy Drinking Blonde Ale",
+      "description": "American Ale with Citrus",
       "price": ""
     },
     {
-      "name": "Brooklyn Brew - Playa",
+      "name": "Breakside - Pilsner",
+      "size": "12 oz",
+      "description": "Liquid Sunshine Pilsner",
+      "price": ""
+    },
+    {
+      "name": "Brooklyn Brew - Playa (Non-Alch)",
       "size": "12 oz",
       "description": "Grapefruit IPA N/A",
       "price": ""
@@ -33,31 +39,109 @@
     {
       "name": "Calidad - Quality Cerveza",
       "size": "12 oz",
-      "description": "Mexican-Style Lager",
+      "description": "Light Mexican-Style Lager",
       "price": ""
     },
     {
-      "name": "Fort George - 3 Way",
+      "name": "Crow & Wolf - Dark Wolf",
       "size": "16 oz",
-      "description": "IPA 16 oz West Coast India Pale Ale",
+      "description": "Sorbet-style Seltzer feat. Boysenberry & Vanilla",
       "price": ""
     },
     {
-      "name": "Great Notion Bubbs - Seltzer",
-      "size": "12 oz",
-      "description": "Blueberry & Lemon Hard Seltzer",
-      "price": ""
-    },
-    {
-      "name": "Great Notion Bubbs - Seltzer",
-      "size": "12 oz",
-      "description": "Pineapple & Mango Hard Seltzer",
-      "price": ""
-    },
-    {
-      "name": "Paperback Bunny With A Chainsaw",
+      "name": "Crow & Wolf - Lady Marmalade",
       "size": "16 oz",
-      "description": "Double Hazy IPA",
+      "description": "Pink Lemonade Sorbet Seltzer made with Dragon Fruit, Yuzu and Lemon",
+      "price": ""
+    },
+    {
+      "name": "Crow & Wolf - Pass the Tabu",
+      "size": "16 oz",
+      "description": "Tropical Seltzer with a blend of Guava, Pinapple, Mango & more",
+      "price": ""
+    },
+    {
+      "name": "Epidemic Ales - Affliction",
+      "size": "16 oz",
+      "description": "Amber Ale",
+      "price": ""
+    },
+    {
+      "name": "Epidemic Ales - OG Nightshade",
+      "size": "16 oz",
+      "description": "Malty, Roasty, Bittersweet Chocolate Stout",
+      "price": ""
+    },
+    {
+      "name": "Epidemic Ales - Pineapple Upside Down Cake",
+      "size": "16 oz",
+      "description": "Hazy Pale Ale",
+      "price": ""
+    },
+    {
+      "name": "Epidemic Ales - Zombrew",
+      "size": "16 oz",
+      "description": "West Coast India Pale Ale",
+      "price": ""
+    },
+    {
+      "name": "Fort George - City of Dreams",
+      "size": "12 oz",
+      "description": "Hazy Pale Ale",
+      "price": ""
+    },
+    {
+      "name": "Great Notion - BUBBS",
+      "size": "12 oz",
+      "description": "Hard Seltzer w/Blueberry & Sicilian Lemon",
+      "price": ""
+    },
+    {
+      "name": "Great Notion - BUBBS",
+      "size": "16 oz",
+      "description": "Hard Seltzer - Fruit Punch",
+      "price": ""
+    },
+    {
+      "name": "Great Notion - Cape Beer",
+      "size": "16 oz",
+      "description": "Tart Ale w/Pineapple, Tangerine, Passionfruit & Guava",
+      "price": ""
+    },
+    {
+      "name": "Great Notion - Jammy Pants",
+      "size": "16 oz",
+      "description": "Tart Ale w/Blueberry, Blackberrry & Boysenberry",
+      "price": ""
+    },
+    {
+      "name": "Great Notion - Ripe",
+      "size": "16 oz",
+      "description": "Hazy IPA",
+      "price": ""
+    },
+    {
+      "name": "Paperback - Bunny with a Chainsaw",
+      "size": "16 oz",
+      "description": "Double Dry Hopped Hazy IPA",
+      "price": ""
+    },
+    {
+      "name": "Paperback - Baby Bunny with a Chainsaw",
+      "size": "16 oz",
+      "description": "Double Dry Hopped Hazy IPA",
+      "price": ""
+    },
+    {
+      "name": "Paperback - No Way Back!",
+      "size": "16 oz",
+      "description": "Triple Dry Hopped IPA",
+      "price": ""
+    },
+    {
+      "name": "Paperback - Satan Wears Pajamas",
+      "size": "16 oz",
+      "description": "American Red Ale",
       "price": ""
     }
   ],
