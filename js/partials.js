@@ -47,19 +47,6 @@ class SiteHeader extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <header class="sticky top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/5">
-        <!--
-          Promo Announcement Banner — temporary, pre-opening only.
-          To remove once the arcade is open: delete this whole "#promo-banner" block, nothing else needs to change.
-        -->
-        <div
-          id="promo-banner"
-          class="w-full h-11 bg-accent-red px-margin-mobile lg:px-margin-desktop flex items-center justify-center shadow-[0_0_20px_rgba(227,27,35,0.6)] animate-pulse"
-        >
-        <span class="font-headline-md text-[11px] font-bold tracking-normal sm:text-[13px] sm:tracking-widest text-white uppercase whitespace-nowrap text-center drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
-          Coming to Downtown Dublin Summer 2026!
-          </span>
-        </div>
-
         <div class="h-20 section-container flex items-center justify-between">
           <a href="${SITE_BASE}index.html" data-nav-home class="flex items-center gap-4">
             <img

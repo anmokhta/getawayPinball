@@ -36,7 +36,7 @@ describe("shared header/footer template (js/partials.js)", () => {
   ];
 
   for (const { path: pagePath, depthPrefix, activePage, homeHref } of pages) {
-    test(`${pagePath}: renders header nav, footer, and promo banner`, async () => {
+    test(`${pagePath}: renders header nav and footer`, async () => {
       const response = await page.goto(`${server.url}/${pagePath}`, { waitUntil: "networkidle0" });
       assert.equal(response.status(), 200);
 
@@ -59,9 +59,6 @@ describe("shared header/footer template (js/partials.js)", () => {
         ],
         `desktop nav hrefs should be prefixed with "${depthPrefix}" on ${pagePath}`
       );
-
-      const bannerText = await page.evaluate(() => document.querySelector("#promo-banner")?.textContent.trim());
-      assert.match(bannerText, /Coming to Downtown Dublin/);
 
       const footerText = await page.evaluate(() => document.querySelector("site-footer footer")?.textContent || "");
       assert.match(footerText, /6890 Village Parkway/);
