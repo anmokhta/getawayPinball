@@ -12,18 +12,6 @@
     "pinballMapDateAdded": "2026-08-18"
   },
   {
-    "id": "batman-66-premium",
-    "name": "Batman 66 (Premium)",
-    "manufacturer": "Stern",
-    "manufacturerSlug": "stern",
-    "year": 2016,
-    "imageAlt": "Batman 66 (Premium) pinball machine translite",
-    "image": "https://img.opdb.org/438ac4d5-b945-4d1b-849a-aa0c6169b8da-large.jpg",
-    "opdbId": "GRoz4-MjBV6",
-    "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6354",
-    "pinballMapDateAdded": "2026-08-18"
-  },
-  {
     "id": "black-knight-sword-of-rage-pro",
     "name": "Black Knight: Sword of Rage (Pro)",
     "manufacturer": "Stern",
@@ -232,6 +220,17 @@
     "opdbId": "G5vLR-MwNwy",
     "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6428",
     "pinballMapDateAdded": "2026-08-18"
+  },
+  {
+    "id": "the-addams-family",
+    "name": "The Addams Family",
+    "manufacturer": "Bally",
+    "manufacturerSlug": "bally",
+    "year": 1992,
+    "imageAlt": "The Addams Family pinball machine translite",
+    "opdbId": "G4ODR-MDXEy",
+    "ipdbLink": "https://www.ipdb.org/machine.cgi?id=20",
+    "pinballMapDateAdded": "2026-10-30"
   },
   {
     "id": "the-getaway-high-speed-ii",
