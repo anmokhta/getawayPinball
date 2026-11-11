@@ -129,17 +129,6 @@
     "pinballMapDateAdded": "2026-08-18"
   },
   {
-    "id": "king-kong-myth-of-terror-island-premium",
-    "name": "King Kong: Myth of Terror Island (Premium)",
-    "manufacturer": "Stern",
-    "manufacturerSlug": "stern",
-    "year": 2025,
-    "imageAlt": "King Kong: Myth of Terror Island (Premium) pinball machine translite",
-    "image": "https://img.opdb.org/359b002f-0eac-4999-b582-67238bbeb9e5-large.jpg",
-    "opdbId": "GEL0V-MyN8E-A1Dkr",
-    "pinballMapDateAdded": "2026-08-18"
-  },
-  {
     "id": "metallica-remastered-premium",
     "name": "Metallica Remastered (Premium)",
     "manufacturer": "Stern",
@@ -149,18 +138,6 @@
     "image": "https://img.opdb.org/c938188f-e622-45a3-b558-0d6b03e6e6e8-large.jpg",
     "opdbId": "GO0q3-MOEy8-ARol7",
     "pinballMapDateAdded": "2026-09-23"
-  },
-  {
-    "id": "monster-bash-remake",
-    "name": "Monster Bash (Remake)",
-    "manufacturer": "Chicago Gaming",
-    "manufacturerSlug": "chicago-gaming",
-    "year": 2018,
-    "imageAlt": "Monster Bash (Remake) pinball machine translite",
-    "image": "https://img.opdb.org/903ea73b-6139-4f1f-8266-c25374f0b619-large.jpg",
-    "opdbId": "Gr3EW-M3dBn",
-    "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6570",
-    "pinballMapDateAdded": "2026-10-01"
   },
   {
     "id": "pokemon-premium",
@@ -242,18 +219,6 @@
     "image": "https://img.opdb.org/4118d0eb-9a75-41e8-b8be-7bb2fa39157d-large.jpg",
     "opdbId": "Grx8Y-MKNe9",
     "ipdbLink": "https://www.ipdb.org/machine.cgi?id=1000",
-    "pinballMapDateAdded": "2026-08-18"
-  },
-  {
-    "id": "the-munsters-pro",
-    "name": "The Munsters (Pro)",
-    "manufacturer": "Stern",
-    "manufacturerSlug": "stern",
-    "year": 2019,
-    "imageAlt": "The Munsters (Pro) pinball machine translite",
-    "image": "https://img.opdb.org/273afc51-2c46-4e54-97ee-d5cc2b605d9f-large.jpg",
-    "opdbId": "GbPde-M5Rkv",
-    "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6564",
     "pinballMapDateAdded": "2026-08-18"
   },
   {
