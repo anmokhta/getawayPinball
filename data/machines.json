@@ -47,6 +47,16 @@
     "pinballMapDateAdded": "2026-09-26"
   },
   {
+    "id": "fallout-le",
+    "name": "Fallout (LE)",
+    "manufacturer": "Stern",
+    "manufacturerSlug": "stern",
+    "year": 2026,
+    "imageAlt": "Fallout (LE) pinball machine translite",
+    "opdbId": "GELVv-Mx0dl-A1J25",
+    "pinballMapDateAdded": "2026-11-14"
+  },
+  {
     "id": "foo-fighters-premium",
     "name": "Foo Fighters (Premium)",
     "manufacturer": "Stern",
@@ -67,30 +77,6 @@
     "image": "https://img.opdb.org/af8b1df3-0f35-49ec-942a-64a6d1f91953-large.jpg",
     "opdbId": "GweeP-MW95j",
     "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6841",
-    "pinballMapDateAdded": "2026-08-18"
-  },
-  {
-    "id": "guardians-of-the-galaxy-pro",
-    "name": "Guardians of the Galaxy (Pro)",
-    "manufacturer": "Stern",
-    "manufacturerSlug": "stern",
-    "year": 2017,
-    "imageAlt": "Guardians of the Galaxy (Pro) pinball machine translite",
-    "image": "https://img.opdb.org/444f71ee-62ff-4fdd-8f6f-801ec8bb0d30-large.jpg",
-    "opdbId": "GRWvz-Mp4yl",
-    "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6474",
-    "pinballMapDateAdded": "2026-08-18"
-  },
-  {
-    "id": "iron-maiden-legacy-of-the-beast-premium",
-    "name": "Iron Maiden: Legacy of the Beast (Premium)",
-    "manufacturer": "Stern",
-    "manufacturerSlug": "stern",
-    "year": 2018,
-    "imageAlt": "Iron Maiden: Legacy of the Beast (Premium) pinball machine translite",
-    "image": "https://img.opdb.org/88402c82-c875-4a7a-bc54-5087fa577ab6-large.jpg",
-    "opdbId": "G4dOQ-MkPxr",
-    "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6556",
     "pinballMapDateAdded": "2026-08-18"
   },
   {
