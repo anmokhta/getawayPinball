@@ -11,6 +11,13 @@ and either add it via a future override file or fix the OPDB captions.
 - OPDB ID: `GELVv-Mx0dl-A1J25`
 - Reason: OPDB search for GELVv-Mx0dl-A1J25 did not resolve to a machine page (https://opdb.org/search?q=GELVv-Mx0dl-A1J25)
 
+## King Kong: Myth of Terror Island (Premium)
+
+- Manufacturer: Stern
+- Year: 2025
+- OPDB ID: `GEL0V-MyN8E-A1Dkr`
+- Reason: OPDB search for GEL0V-MyN8E-A1Dkr did not resolve to a machine page (https://opdb.org/search?q=GEL0V-MyN8E-A1Dkr)
+
 ## The Addams Family
 
 - Manufacturer: Bally

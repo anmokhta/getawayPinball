@@ -57,17 +57,6 @@
     "pinballMapDateAdded": "2026-11-14"
   },
   {
-    "id": "foo-fighters-premium",
-    "name": "Foo Fighters (Premium)",
-    "manufacturer": "Stern",
-    "manufacturerSlug": "stern",
-    "year": 2023,
-    "imageAlt": "Foo Fighters (Premium) pinball machine translite",
-    "image": "https://img.opdb.org/7f351600-3de4-45d5-8729-6857bb0d420d-large.jpg",
-    "opdbId": "GpeoL-MkPz1-A9Qlw",
-    "pinballMapDateAdded": "2026-08-18"
-  },
-  {
     "id": "godzilla-pro",
     "name": "Godzilla (Pro)",
     "manufacturer": "Stern",
@@ -113,6 +102,16 @@
     "opdbId": "GK17D-MdEqz",
     "ipdbLink": "https://www.ipdb.org/machine.cgi?id=6573",
     "pinballMapDateAdded": "2026-08-18"
+  },
+  {
+    "id": "king-kong-myth-of-terror-island-premium",
+    "name": "King Kong: Myth of Terror Island (Premium)",
+    "manufacturer": "Stern",
+    "manufacturerSlug": "stern",
+    "year": 2025,
+    "imageAlt": "King Kong: Myth of Terror Island (Premium) pinball machine translite",
+    "opdbId": "GEL0V-MyN8E-A1Dkr",
+    "pinballMapDateAdded": "2026-11-20"
   },
   {
     "id": "metallica-remastered-premium",
